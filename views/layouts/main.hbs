@@ -5,31 +5,61 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" type="text/css" href="/css/tailwind.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.1.2/tailwind.min.css"
+    integrity="sha512-RntatPOhEcQEA81gC/esYoCkGkL7AYV7TeTPoU+R9zE44/yWxVvLIBfBSaMu78rhoDd73ZeRHXRJN5+aPEK53Q==" crossorigin="anonymous" />
   <link rel="stylesheet" type="text/css" href="/css/main.css">
   <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
   <title>Document</title>
 </head>
 
 <body class="h-screen">
+  <!--Header-->
   <div class="w-full h-14 flex justify-center items-center mt-5 pb-5 border-b-2 text-gray-500">
-    <div class="w-10/12 flex justify-between items-center font-normal">
-      <div class="w-3/4 flex justify-start items-center">
-        <div class="text-4xl mr-20 font-extrabold text-green-600">Thrift Market</div>
-        <div class="w-2/5 flex justify-between text-base">
-          <div>Trang chủ</div>
-          <div>Quản lý bài đăng</div>
-          <div>Tin nhắn</div>
+    <div class="w-full mx-5 xl:w-10/12 flex justify-between items-center font-normal">
+      <div class="w-10/12 lg:w-4/5 flex justify-start items-center">
+        <div class="text-4xl mr-10 xl:mr-20 font-extrabold text-green-600">Thrift Market</div>
+        <div class="w-1/2 xl:w-2/5 flex justify-between text-base hidden md:flex">
+          <div class="cursor-pointer hover:underline">Trang chủ</div>
+          <div class="cursor-pointer hover:underline">Quản lý bài đăng</div>
+          <div class="cursor-pointer hover:underline">Tin nhắn</div>
         </div>
       </div>
-      <div class="w-1/5 flex justify-around items-center text-base">
-        <div class="w-1/2">Đăng nhập</div>
-        <div class="bg-green-600 p-2 text-white w-1/2 flex justify-center rounded-lg">
+      <div class="w-1/5 flex justify-around items-center text-base hidden lg:flex">
+        <div class="w-1/2 "><span class="cursor-pointer hover:underline">Đăng nhập</span></div>
+        <div class="bg-green-600 p-2 text-white w-1/2 flex justify-center rounded-lg cursor-pointer">
           <div>Đăng ký</div>
+        </div>
+      </div>
+      <!--Dropdown menu-->
+      <div class="relative inline-block text-left lg:hidden">
+        <div>
+          <button type="button"
+            class="menu close text-xs inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-2 py-1 bg-white text-gray-700 hover:bg-gray-50 focus:outline-none"
+            id="menu-button" aria-expanded="true" aria-haspopup="true">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--mdi" width="32" height="32"
+              preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+              <path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z" fill="currentColor"></path>
+            </svg>
+          </button>
+        </div>
+        <div class="submenu hidden origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 divide-y divide-gray-100 focus:outline-none" role="menu"
+          aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+          <div class="py-1" role="none">
+            <a href="#" class="text-gray-700 block px-4 py-2 text-sm hover:bg-green-500" role="menuitem" tabindex="-1" id="menu-item-0">Đăng nhập</a>
+            <a href="#" class="text-gray-700 block px-4 py-2 text-sm hover:bg-green-500" role="menuitem" tabindex="-1" id="menu-item-1">Đăng ký</a>
+          </div>
+          <div class="py-1" role="none">
+            <a href="#" class="text-gray-700 block px-4 py-2 text-sm hover:bg-green-500" role="menuitem" tabindex="-1" id="menu-item-4">Quản lý bài đăng</a>
+            <a href="#" class="text-gray-700 block px-4 py-2 text-sm hover:bg-green-500" role="menuitem" tabindex="-1" id="menu-item-5">Tin nhắn</a>
+          </div>
+          <div class="py-1" role="none">
+            <a href="#" class="text-gray-700 block px-4 py-2 text-sm hover:bg-green-500" role="menuitem" tabindex="-1" id="menu-item-6">Đăng xuất</a>
+          </div>
         </div>
       </div>
     </div>
   </div>
+  <!--Search bar and post button-->
   <div class="w-full flex justify-center items-center bg-gray-800">
     <div class="w-1/2 flex justify-start my-5">
       <div class="flex justify-center items-center bg-white rounded-l-lg pl-2 text-gray-400">
@@ -39,10 +69,10 @@
         </svg>
       </div>
       <div class="w-3/4">
-        <input type="text" class="w-full h-10 rounded-r-lg p-2" placeholder="Tìm kiếm trên Thrift Market ...">
+        <input type="text" class="w-full h-10 rounded-r-lg p-2 focus:outline-none" placeholder="Tìm kiếm trên Thrift Market ...">
       </div>
     </div>
-    <div class="flex justify-center items-center bg-white py-1 px-5 rounded-lg text-green-600">
+    <div class="flex justify-center items-center bg-white py-1 px-5 rounded-lg text-green-600 hover:underline cursor-pointer">
       <div>
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--ic" width="32" height="32"
           preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
@@ -54,6 +84,7 @@
     </div>
   </div>
   {{{body}}}
+  <script type="text/javascript" src="/js/main.js"></script>
 </body>
 
 </html>
