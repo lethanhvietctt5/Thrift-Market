@@ -2,6 +2,8 @@ const express = require("express");
 const path = require("path");
 const session = require("express-session");
 const hbs = require("express-handlebars");
+const hbs_section = require("express-handlebars-sections");
+const passport = require("passport");
 const mongoose = require("mongoose");
 const MongoStore = require("connect-mongo");
 
@@ -17,6 +19,9 @@ module.exports = function config(app) {
   );
 
   mongoose.set("useCreateIndex", true);
+
+  app.use(passport.initialize());
+  app.use(passport.session());
 
   app.use(express.urlencoded({ extended: false }));
   app.use(express.json());
@@ -52,6 +57,9 @@ module.exports = function config(app) {
       },
       layoutsDir: path.join(__dirname, "views/layouts"),
       defaultLayout: "main.hbs",
+      helpers: {
+        section: hbs_section(),
+      },
     })
   );
 

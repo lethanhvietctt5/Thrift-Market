@@ -9,6 +9,8 @@
     integrity="sha512-RntatPOhEcQEA81gC/esYoCkGkL7AYV7TeTPoU+R9zE44/yWxVvLIBfBSaMu78rhoDd73ZeRHXRJN5+aPEK53Q==" crossorigin="anonymous" />
   <link rel="stylesheet" type="text/css" href="/css/main.css">
   <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.css"
+    integrity="sha512-oe8OpYjBaDWPt2VmSFR+qYOdnTjeV9QPLJUeqZyprDEQvQLJ9C5PCFclxwNuvb/GQgQngdCXzKSFltuHD3eCxA==" crossorigin="anonymous" />
   <title>Document</title>
 </head>
 
@@ -25,7 +27,7 @@
         </div>
       </div>
       <div class="w-1/5 flex justify-around items-center text-base hidden lg:flex">
-        <div class="w-1/2 "><span class="cursor-pointer hover:underline">Đăng nhập</span></div>
+        <div class="w-1/2 "><a href="/login" class="hover:underline">Đăng nhập</a></div>
         <div class="bg-green-600 p-2 text-white w-1/2 flex justify-center rounded-lg cursor-pointer">
           <div>Đăng ký</div>
         </div>
@@ -85,6 +87,11 @@
   </div>
   {{{body}}}
   <script type="text/javascript" src="/js/main.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js" integrity="sha512-lbwH47l/tPXJYG9AcFNoJaTMhGvYWhVM9YI43CT+uteTRRaiLCui8snIgyAN8XWgNjNhCqlAUdzZptso6OCoFQ=="
+    crossorigin="anonymous"></script>
+  {{{_sections.js}}}
 </body>
 
 </html>
