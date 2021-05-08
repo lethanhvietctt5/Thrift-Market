@@ -15,7 +15,10 @@ router.post(
 );
 
 router.get("/", (req, res) => {
-  res.render("login");
+  if (typeof req.user !== "undefined") {
+    return res.redirect("/")
+  }
+  return res.render("login");
 });
 
 module.exports = router;
