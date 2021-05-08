@@ -15,6 +15,7 @@ router.post(
 );
 
 router.get("/", (req, res) => {
+  console.log(req.user);
   res.render("login");
 });
 

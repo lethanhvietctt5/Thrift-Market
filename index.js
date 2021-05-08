@@ -8,6 +8,7 @@ insert();
 const PORT = process.env.PORT || 3000;
 
 app.get("/", (req, res) => {
+  console.log(req.user);
   res.render("index");
 });
 

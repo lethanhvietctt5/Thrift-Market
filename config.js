@@ -6,6 +6,7 @@ const hbs_section = require("express-handlebars-sections");
 const passport = require("passport");
 const mongoose = require("mongoose");
 const MongoStore = require("connect-mongo");
+const flash = require("req-flash");
 
 module.exports = function config(app) {
   // Connect to database
@@ -19,9 +20,6 @@ module.exports = function config(app) {
   );
 
   mongoose.set("useCreateIndex", true);
-
-  app.use(passport.initialize());
-  app.use(passport.session());
 
   app.use(express.urlencoded({ extended: false }));
   app.use(express.json());
@@ -39,6 +37,13 @@ module.exports = function config(app) {
       }),
     })
   );
+
+  // Init for passport
+  app.use(passport.initialize());
+  app.use(passport.session());
+
+  // Flash
+  app.use(flash());
 
   app.use(function (req, res, next) {
     res.locals.session = req.session;
