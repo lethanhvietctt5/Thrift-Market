@@ -9,6 +9,7 @@ const user = new Schema({
   password: String,
   isBanned: Boolean,
   gender: String,
+  isAdmin: Boolean
 });
 
 module.exports = mongoose.model("User", user);

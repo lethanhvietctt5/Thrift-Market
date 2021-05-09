@@ -18,7 +18,7 @@ $(document).ready(function () {
   };
   $(".login").submit(function () {
     const regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    if (!regex.test($("#email").val().toLowerCase())) {
+    if (!regex.test($("#email").val().toLowerCase()) && $("#email").val().toLowerCase() !== "admin") {
       toastr.error("Email không hợp lệ ...");
       return false;
     } else if ($("#password").val().length < 8) {

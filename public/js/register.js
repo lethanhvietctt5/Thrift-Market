@@ -18,8 +18,6 @@ $(document).ready(function () {
     hideMethod: "fadeOut",
   };
 
-  console.log($("#gender").val());
-
   $(".register").submit(function () {
     if ($("#name").val().length == 0) {
       toastr.error("Bạn chưa nhập Họ tên người dùng ...");
