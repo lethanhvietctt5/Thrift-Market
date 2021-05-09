@@ -9,10 +9,12 @@ const insert = require("./script_insert");
 const loginRoute = require("./routes/login");
 const registerRoute = require("./routes/register");
 const adminRoute = require("./routes/admin");
+const userRoute = require("./routes/user");
 
 // Import middlewares
 const mdwCheckLogin = require("./middlewares/checkLogin");
 const mdwCheckAdmin = require("./middlewares/checkAdmin");
+const mdwLogged = require("./middlewares/logged");
 
 // Import Schema
 const Category = require("./models/Category");
@@ -45,6 +47,8 @@ app.get("/logout", (req, res) => {
 app.get("/info", (req, res) => {
   res.render("info");
 });
+
+app.use("/:user_id", mdwLogged, userRoute);
 
 app.listen(PORT, () => {
   console.log(`App is running at http://localhost:${PORT}`);
