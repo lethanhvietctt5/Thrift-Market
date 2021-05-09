@@ -14,6 +14,9 @@ const adminRoute = require("./routes/admin");
 const mdwCheckLogin = require("./middlewares/checkLogin");
 const mdwCheckAdmin = require("./middlewares/checkAdmin");
 
+// Import Schema
+const Category = require("./models/Category");
+
 config(app);
 //insert();
 
@@ -21,8 +24,9 @@ const PORT = process.env.PORT || 3000;
 
 app.use(mdwCheckLogin);
 
-app.get("/", mdwCheckLogin, (req, res) => {
-  res.render("index");
+app.get("/", mdwCheckLogin, async (req, res) => {
+  const categories = await Category.find();
+  res.render("index", { categories });
 });
 
 app.use("/admin", mdwCheckAdmin, adminRoute);

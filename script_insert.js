@@ -1,5 +1,6 @@
 const User = require("./models/User");
-const users = require("./dumbData");
+const Category = require("./models/Category");
+const { users, categories } = require("./dumbData");
 const bcrypt = require("bcrypt");
 
 module.exports = async function () {
@@ -10,6 +11,14 @@ module.exports = async function () {
       user = new User({ ...users[i], isAdmin: false });
       user.password = await bcrypt.hash(user.password, salt);
       await user.save();
+    }
+  }
+
+  for (let i = 0; i < categories.length; i++) {
+    let category = await Category.findOne({ name: categories[i].name });
+    if (!category) {
+      category = new Category(categories[i]);
+      await category.save();
     }
   }
   let admin = {
