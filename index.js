@@ -7,7 +7,7 @@ const registerRoute = require("./routes/register");
 const mdwCheckLogin = require("./middlewares/checkLogin");
 
 config(app);
-insert();
+//insert();
 
 const PORT = process.env.PORT || 3000;
 
@@ -27,6 +27,10 @@ app.get("/logout", (req, res) => {
   req.session.destroy();
   res.redirect("/login");
 });
+
+app.get("/info", (req, res) => {
+  res.render("info")
+})
 
 app.listen(PORT, () => {
   console.log(`App is running at http://localhost:${PORT}`);
