@@ -8,9 +8,8 @@ function loopSlider(){
             $("#slider-2").delay(400).fadeIn(400);
             $("#sButton1").css("background-color", "rgba(255,255,255, 0.5)");
             $("#sButton2").css("background-color", "rgba(255, 255, 255)");
-        cont=1;
-        
-        break;
+            cont=1;
+            break;
         }
         case 1:
         {
@@ -19,15 +18,10 @@ function loopSlider(){
             $("#slider-1").delay(400).fadeIn(400);
             $("#sButton2").css("background-color", "rgba(255,255,255, 0.5)");
             $("#sButton1").css("background-color", "rgba(255, 255, 255)");
-           
-        cont=0;
-        
-        break;
+            cont=0;
+            break;
         }
-        
-        
-        }},8000);
-
+    }},8000);
 }
 
 function reinitLoop(time){

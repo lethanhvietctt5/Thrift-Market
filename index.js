@@ -31,6 +31,10 @@ app.get("/", mdwCheckLogin, async (req, res) => {
   res.render("index", { categories });
 });
 
+app.get("/message", mdwCheckLogin, async(req, res) => {
+  res.render("message");
+})
+
 app.use("/admin", mdwCheckAdmin, adminRoute);
 
 app.use("/register", mdwCheckLogin, registerRoute);

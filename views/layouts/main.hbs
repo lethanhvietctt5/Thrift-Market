@@ -26,7 +26,7 @@
           <div class="w-1/2 xl:w-2/5 flex justify-between text-base hidden md:flex">
             <div class="cursor-pointer hover:underline"><a href="/">Trang chủ</a></div>
             <div class="cursor-pointer hover:underline">Quản lý bài đăng</div>
-            <div class="cursor-pointer hover:underline">Tin nhắn</div>
+            <div class="cursor-pointer hover:underline"><a href="/message">Tin nhắn</a></div>
           </div>
         </div>
         {{#if session.user}}
@@ -78,7 +78,7 @@
             {{#if session.user}}
               <div class="py-1 md:hidden" role="none">
                 <a href="#" class="text-gray-700 block px-4 py-2 text-sm hover:bg-green-500" role="menuitem" tabindex="-1" id="menu-item-4">Quản lý bài đăng</a>
-                <a href="#" class="text-gray-700 block px-4 py-2 text-sm hover:bg-green-500" role="menuitem" tabindex="-1" id="menu-item-5">Tin nhắn</a>
+                <a href="/message" class="text-gray-700 block px-4 py-2 text-sm hover:bg-green-500" role="menuitem" tabindex="-1" id="menu-item-5">Tin nhắn</a>
               </div>
               <div class="py-1" role="none">
                 <a href="/logout" class="text-gray-700 block px-4 py-2 text-sm hover:bg-green-500" role="menuitem" tabindex="-1" id="menu-item-6">Đăng xuất</a>
@@ -137,7 +137,7 @@
     <div id="footer-menu" class="flex justify-center m-2">
       <a href="#" class="text-white text-sm font-white font-bold px-4 py-1" style="border-right: 1px solid #467171">TRANG CHỦ</a>
       <a href="#" class="text-white text-sm font-white font-bold px-4 py-1" style="border-right: 1px solid #467171">QUẢN LÝ BÀI ĐĂNG</a>
-      <a href="#" class="text-white text-sm font-white font-bold px-4 py-1" style="border-right: 1px solid #467171">TIN NHẮN</a>
+      <a href="/message" class="text-white text-sm font-white font-bold px-4 py-1" style="border-right: 1px solid #467171">TIN NHẮN</a>
       <a href="#" class="text-white text-sm font-white font-bold px-4 py-1">ĐĂNG BÀI</a>
     </div>
 
