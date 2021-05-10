@@ -1,3 +1,9 @@
 body {
   font-family: 'Inter';
 }
+
+@media (max-width: 574px) {
+  .icon_profile {
+    display: none;
+  }
+}

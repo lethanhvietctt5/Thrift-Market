@@ -181,4 +181,39 @@ const users = [
   },
 ];
 
-module.exports = users;
+const categories = [
+  {
+    name: "Xe cộ",
+    img: "/images/categories/xeco.png",
+  },
+  {
+    name: "Đồ điện tử",
+    img: "/images/categories/dodientu.png",
+  },
+  {
+    name: "Thú cưng",
+    img: "/images/categories/thucung.png",
+  },
+  {
+    name: "Tủ lạnh, máy giặc",
+    img: "/images/categories/tulanh.png",
+  },
+  {
+    name: "Nội thất",
+    img: "/images/categories/noithat.png",
+  },
+  {
+    name: "Thời trang",
+    img: "/images/categories/thoitrang.png",
+  },
+  {
+    name: "Sách, tài liệu",
+    img: "/images/categories/tailieu.png",
+  },
+  {
+    name: "Đồ dùng cá nhân",
+    img: "/images/categories/canhan.png",
+  },
+];
+
+module.exports = {users, categories};

@@ -33,12 +33,14 @@
           <div class="w-1/5 flex justify-end items-center text-base hidden lg:flex">
             <div class="w-full flex justify-end items-center text-base hidden lg:flex">
               <div class="flex justify-center mr-2">
-                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--ph" width="32" height="32"
+                <a href="/{{session.user._id}}">
+                  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--ph" width="32" height="32"
                   preserveAspectRatio="xMidYMid meet" viewBox="0 0 256 256">
                   <path
                     d="M232 128a104 104 0 1 0-174.18 76.681a7.963 7.963 0 0 0 1.326 1.19a103.785 103.785 0 0 0 137.712-.004a7.957 7.957 0 0 0 1.317-1.181A103.746 103.746 0 0 0 232 128zm-192 0a88 88 0 1 1 153.758 58.41a79.56 79.56 0 0 0-36.056-28.745a48 48 0 1 0-59.404 0a79.56 79.56 0 0 0-36.056 28.745A87.638 87.638 0 0 1 40 128zm56-8a32 32 0 1 1 32 32a32.036 32.036 0 0 1-32-32zm-21.917 77.499a64.022 64.022 0 0 1 107.834 0a87.814 87.814 0 0 1-107.834 0z"
                     fill="currentColor"></path>
                 </svg>
+                </a>
               </div>
               <div class="w-1/2"><a href="/logout" class="hover:underline">Đăng xuất</a></div>
             </div>
@@ -67,7 +69,7 @@
             aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
             <div class="py-1" role="none">
               {{#if session.user}}
-                <a href="#" class="text-gray-700 block px-4 py-2 text-sm hover:bg-green-500" role="menuitem" tabindex="-1" id="menu-item-0">Trang cá nhân</a>
+                <a href="/{{session.user._id}}" class="text-gray-700 block px-4 py-2 text-sm hover:bg-green-500" role="menuitem" tabindex="-1" id="menu-item-0">Trang cá nhân</a>
               {{else}}
                 <a href="/login" class="text-gray-700 block px-4 py-2 text-sm hover:bg-green-500" role="menuitem" tabindex="-1" id="menu-item-0">Đăng nhập</a>
                 <a href="/register" class="text-gray-700 block px-4 py-2 text-sm hover:bg-green-500" role="menuitem" tabindex="-1" id="menu-item-1">Đăng ký</a>
