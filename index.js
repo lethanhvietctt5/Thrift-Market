@@ -1,4 +1,5 @@
 const express = require("express");
+require('express-async-errors');
 const config = require("./config");
 const app = express();
 
@@ -10,6 +11,7 @@ const loginRoute = require("./routes/login");
 const registerRoute = require("./routes/register");
 const adminRoute = require("./routes/admin");
 const userRoute = require("./routes/user");
+const postRoute = require("./routes/post");
 
 // Import middlewares
 const mdwCheckLogin = require("./middlewares/checkLogin");
@@ -41,15 +43,13 @@ app.use("/register", mdwCheckLogin, registerRoute);
 
 app.use("/login", mdwCheckLogin, loginRoute);
 
+app.use("/post", postRoute);
+
 app.get("/logout", (req, res) => {
   req.logOut();
   req.session.user = undefined;
   req.session.destroy();
   res.redirect("/login");
-});
-
-app.get("/info", (req, res) => {
-  res.render("info");
 });
 
 app.use("/:user_id", mdwLogged, userRoute);
