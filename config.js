@@ -70,3 +70,11 @@ module.exports = function config(app) {
 
   app.use(express.static(__dirname + "/public"));
 };
+
+const handlebars = hbs.create({});
+handlebars.handlebars.registerHelper(
+  "ifEquals",
+  function (arg1, arg2, options) {
+    return arg1 == arg2 ? options.fn(this) : options.inverse(this);
+  }
+);

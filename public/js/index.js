@@ -51,5 +51,4 @@ $(function(){
   $("#slider-2").hide();
   $("#sButton1").addClass("bg-purple-800");
   loopSlider();
-  console.log('worked');
 });
