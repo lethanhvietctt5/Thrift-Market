@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const message = new Schema({
   id_sender: String,
-  id_reciever: String,
+  id_receiver: String,
   content: String,
   date: Date
 });

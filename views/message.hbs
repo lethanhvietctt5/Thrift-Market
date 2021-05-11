@@ -1,52 +1,22 @@
 <div class="w-3/4 grid grid-cols-3" style="margin-left: 12.5%;">
     <div style="height: 700px;">
-        <div style="border-bottom: 1px solid rgba(0,0,0,0.25); height: 85px;">
+        <div id="user-info" data-id="{{session.user._id}}" style="border-bottom: 1px solid rgba(0,0,0,0.25); height: 85px;">
             <a href="/{{session.user._id}}" class="flex p-3 items-center" style="width: fit-content;">
                 <img src="/images/avatars/{{#ifEquals session.user.gender "Nam"}}male{{else}}female{{/ifEquals}}.jpg" style="height: 60px; border-radius: 50%; border: 1px solid black;">
                 <p class="font-bold text-l pl-3">{{session.user.name}}</p>
             </a>
         </div>
         <p class="text-center uppercase font-bold text-sm py-3" style="height:45px;">Tin nhắn</p>
-        <div class="flex flex-col overflow-auto" style="height:570px;">
-            <div class="user cursor-pointer flex items-center p-3 hover:bg-gray-100 transition duration-300 ease-in-out"
-                data-name="Người dùng 1" style="height:80px; border-bottom: 1px solid rgb(233, 226, 226);">
-                <img src="/images/avatars/male.jpg" style="height: 50px; border-radius: 50%; border: 1px solid black;">
-                <p class="font-bold text-sm pl-3">Người dùng 1</p>
-            </div>
-            <div class="user cursor-pointer flex items-center p-3 hover:bg-gray-100 transition duration-300 ease-in-out"
-                data-name="Người dùng 2" style="height:80px; border-bottom: 1px solid rgb(233, 226, 226);">
-                <img src="/images/avatars/male.jpg" style="height: 50px; border-radius: 50%; border: 1px solid black;">
-                <p class="font-bold text-sm pl-3">Người dùng 2</p>
-            </div>
-            <div class="user cursor-pointer flex items-center p-3 hover:bg-gray-100 transition duration-300 ease-in-out"
-                data-name="Người dùng 3" style="height:80px; border-bottom: 1px solid rgb(233, 226, 226);">
-                <img src="/images/avatars/male.jpg" style="height: 50px; border-radius: 50%; border: 1px solid black;">
-                <p class="font-bold text-sm pl-3">Người dùng 3</p>
-            </div>
-            <div class="user cursor-pointer flex items-center p-3 hover:bg-gray-100 transition duration-300 ease-in-out"
-                data-name="Người dùng 4" style="height:80px; border-bottom: 1px solid rgb(233, 226, 226);">
-                <img src="/images/avatars/male.jpg" style="height: 50px; border-radius: 50%; border: 1px solid black;">
-                <p class="font-bold text-sm pl-3">Người dùng 4</p>
-            </div>
-        </div>
+        <div id="user-box" class="flex flex-col overflow-auto" style="height:570px;"></div>
     </div>
     <div class="col-span-2 border relative flex flex-col" style="height:700px;">
-        <div id="selected-user" class="flex flex-col p-3 items-center" style="height:115px;">
-            <img src="/images/avatars/male.jpg" style="height: 60px; border-radius: 50%; border: 1px solid black;">
-            <p class="font-bold text-l mt-1">Người dùng 1</p>
+        <div id="selected-user" data-id="{{selectedUser._id}}" class="flex flex-col p-3 items-center" style="height:115px;">
+            {{#if selectedUser}}
+                <img src="/images/avatars/{{#ifEquals selectedUser.gender "Nam"}}male{{else}}female{{/ifEquals}}.jpg" style="height: 60px; border-radius: 50%; border: 1px solid black;">
+                <p class="font-bold text-l mt-1">{{selectedUser.name}}</p>
+            {{/if}}
         </div>
         <div id="boxchat" class="w-full overflow-y-scroll shadow-inner border flex flex-col justify-start" style="margin-bottom: 50px; height:585px;">
-            <div class="w-full flex">
-                <div class="rounded-2xl break-words bg-red-300 text-white mx-3 my-1 p-2" style="width: fit-content; max-width: 70%;">
-                    <p>Message</p>
-                </div>
-            </div>
-            
-            <div class="w-full flex justify-end">
-                <div class="rounded-2xl break-words bg-purple-300 text-white mx-3 my-1 p-2" style="width: fit-content; max-width: 70%;">
-                    <p>Message</p>
-                </div>
-            </div>
         </div>
         <div class="absolute -bottom-0 w-full">
             <textarea name="message" id="message" placeholder="Viết tin nhắn..."
@@ -57,5 +27,6 @@
 </div>
 
 {{#section "js"}}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script type="text/javascript" src="/js/message.js"></script>
 {{/section}}
