@@ -14,3 +14,9 @@ menu.onclick = function () {
     submenu.classList.add("hidden");
   }
 };
+
+$(document).ready(function () {
+  let birth = $(".birth").text();
+  let date = new Date(birth);
+  $(".birth").text(date.toLocaleDateString());
+});

@@ -1,166 +1,385 @@
-<!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.1.2/tailwind.min.css"
-    integrity="sha512-RntatPOhEcQEA81gC/esYoCkGkL7AYV7TeTPoU+R9zE44/yWxVvLIBfBSaMu78rhoDd73ZeRHXRJN5+aPEK53Q==" crossorigin="anonymous" />
-  <link rel="stylesheet" type="text/css" href="/css/main.css">
-  <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.css"
-    integrity="sha512-oe8OpYjBaDWPt2VmSFR+qYOdnTjeV9QPLJUeqZyprDEQvQLJ9C5PCFclxwNuvb/GQgQngdCXzKSFltuHD3eCxA==" crossorigin="anonymous" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
-  <title>Thrift Market</title>
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.1.2/tailwind.min.css"
+      integrity="sha512-RntatPOhEcQEA81gC/esYoCkGkL7AYV7TeTPoU+R9zE44/yWxVvLIBfBSaMu78rhoDd73ZeRHXRJN5+aPEK53Q=="
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" type="text/css" href="/css/main.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Inter"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.css"
+      integrity="sha512-oe8OpYjBaDWPt2VmSFR+qYOdnTjeV9QPLJUeqZyprDEQvQLJ9C5PCFclxwNuvb/GQgQngdCXzKSFltuHD3eCxA=="
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+      crossorigin="anonymous"
+    />
+    <title>Thrift Market</title>
+  </head>
 
-<body class="h-screen">
-  <!--Header-->
-  <div class="flex justify-center items-center">
-    <div class="w-full max-w-screen-xl h-14 flex justify-center items-center mt-5 pb-5 border-b-2 text-gray-500">
-      <div class="w-full mx-5 xl:w-10/12 flex justify-between items-center font-normal">
-        <div class="w-10/12 lg:w-4/5 flex justify-start items-center">
-          <div class="text-4xl mr-10 xl:mr-20 font-extrabold text-green-600"><a href="/">Thrift Market</a></div>
-          <div class="w-1/2 xl:w-2/5 flex justify-between text-base hidden md:flex">
-            <div class="cursor-pointer hover:underline"><a href="/">Trang chủ</a></div>
-            <div class="cursor-pointer hover:underline">Quản lý bài đăng</div>
-            <div class="cursor-pointer hover:underline"><a href="/message">Tin nhắn</a></div>
-          </div>
-        </div>
-        {{#if session.user}}
-          <div class="w-1/5 flex justify-end items-center text-base hidden lg:flex">
-            <div class="w-full flex justify-end items-center text-base hidden lg:flex">
-              <div class="flex justify-center mr-2">
-                <a href="/{{session.user._id}}">
-                  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--ph" width="32" height="32"
-                  preserveAspectRatio="xMidYMid meet" viewBox="0 0 256 256">
-                  <path
-                    d="M232 128a104 104 0 1 0-174.18 76.681a7.963 7.963 0 0 0 1.326 1.19a103.785 103.785 0 0 0 137.712-.004a7.957 7.957 0 0 0 1.317-1.181A103.746 103.746 0 0 0 232 128zm-192 0a88 88 0 1 1 153.758 58.41a79.56 79.56 0 0 0-36.056-28.745a48 48 0 1 0-59.404 0a79.56 79.56 0 0 0-36.056 28.745A87.638 87.638 0 0 1 40 128zm56-8a32 32 0 1 1 32 32a32.036 32.036 0 0 1-32-32zm-21.917 77.499a64.022 64.022 0 0 1 107.834 0a87.814 87.814 0 0 1-107.834 0z"
-                    fill="currentColor"></path>
-                </svg>
-                </a>
-              </div>
-              <div class="w-1/2"><a href="/logout" class="hover:underline">Đăng xuất</a></div>
-            </div>
-          </div>
-        {{else}}
-          <div class="w-1/5 flex justify-around items-center text-base hidden lg:flex">
-            <div class="w-1/2 "><a href="/login" class="hover:underline">Đăng nhập</a></div>
-            <div class="bg-green-600 p-2 text-white w-1/2 flex justify-center rounded-lg">
-              <a href="/register">Đăng ký</a>
-            </div>
-          </div>
-        {{/if}}
-        <!--Dropdown menu-->
-        <div class="relative inline-block text-left lg:hidden">
-          <div>
-            <button type="button"
-              class="menu close text-xs inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-2 py-1 bg-white text-gray-700 hover:bg-gray-50 focus:outline-none"
-              id="menu-button" aria-expanded="true" aria-haspopup="true">
-              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--mdi" width="32" height="32"
-                preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
-                <path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z" fill="currentColor"></path>
-              </svg>
-            </button>
-          </div>
-          <div class="submenu hidden origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 divide-y divide-gray-100 focus:outline-none" role="menu"
-            aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
-            <div class="py-1" role="none">
-              {{#if session.user}}
-                <a href="/{{session.user._id}}" class="text-gray-700 block px-4 py-2 text-sm hover:bg-green-500" role="menuitem" tabindex="-1" id="menu-item-0">Trang cá nhân</a>
+  <body class="h-screen">
+    <!--Header-->
+    <div class="flex justify-center items-center">
+      <div
+        class="w-full max-w-screen-xl h-14 flex justify-center items-center mt-5 pb-5 border-b-2 text-gray-500"
+      >
+        <div
+          class="w-full mx-5 xl:w-10/12 flex justify-between items-center font-normal"
+        >
+          <div class="w-10/12 lg:w-4/5 flex justify-start items-center">
+            <div
+              class="text-4xl mr-10 xl:mr-20 font-extrabold text-green-600"
+            ><a href="/">Thrift Market</a></div>
+            <div
+              class="w-1/2 xl:w-3/5 flex justify-between text-base hidden md:flex"
+            >
+              <div class="cursor-pointer hover:underline"><a href="/">Trang chủ</a></div>
+              <div class="cursor-pointer hover:underline">Quản lý bài đăng</div>
+              {{#if session.user.isAdmin}}
+                <div class="cursor-pointer hover:underline"><a
+                    href="/admin/users"
+                  >Quản lý người dùng</a></div>
               {{else}}
-                <a href="/login" class="text-gray-700 block px-4 py-2 text-sm hover:bg-green-500" role="menuitem" tabindex="-1" id="menu-item-0">Đăng nhập</a>
-                <a href="/register" class="text-gray-700 block px-4 py-2 text-sm hover:bg-green-500" role="menuitem" tabindex="-1" id="menu-item-1">Đăng ký</a>
+                <div class="cursor-pointer hover:underline"><a
+                    href="/message"
+                  >Tin nhắn</a></div>
               {{/if}}
             </div>
-            {{#if session.user}}
-              <div class="py-1 md:hidden" role="none">
-                <a href="#" class="text-gray-700 block px-4 py-2 text-sm hover:bg-green-500" role="menuitem" tabindex="-1" id="menu-item-4">Quản lý bài đăng</a>
-                <a href="/message" class="text-gray-700 block px-4 py-2 text-sm hover:bg-green-500" role="menuitem" tabindex="-1" id="menu-item-5">Tin nhắn</a>
+          </div>
+          {{#if session.user}}
+            <div
+              class="w-1/5 flex justify-end items-center text-base hidden lg:flex"
+            >
+              <div
+                class="w-full flex justify-end items-center text-base hidden lg:flex"
+              >
+                {{#if session.user.isAdmin}}{{else}}
+                  <div class="flex justify-center mr-2">
+                    <a href="/{{session.user._id}}">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink"
+                        aria-hidden="true"
+                        role="img"
+                        class="iconify iconify--ph"
+                        width="32"
+                        height="32"
+                        preserveAspectRatio="xMidYMid meet"
+                        viewBox="0 0 256 256"
+                      >
+                        <path
+                          d="M232 128a104 104 0 1 0-174.18 76.681a7.963 7.963 0 0 0 1.326 1.19a103.785 103.785 0 0 0 137.712-.004a7.957 7.957 0 0 0 1.317-1.181A103.746 103.746 0 0 0 232 128zm-192 0a88 88 0 1 1 153.758 58.41a79.56 79.56 0 0 0-36.056-28.745a48 48 0 1 0-59.404 0a79.56 79.56 0 0 0-36.056 28.745A87.638 87.638 0 0 1 40 128zm56-8a32 32 0 1 1 32 32a32.036 32.036 0 0 1-32-32zm-21.917 77.499a64.022 64.022 0 0 1 107.834 0a87.814 87.814 0 0 1-107.834 0z"
+                          fill="currentColor"
+                        ></path>
+                      </svg>
+                    </a>
+                  </div>
+                {{/if}}
+                <div class="w-1/2"><a
+                    href="/logout"
+                    class="hover:underline"
+                  >Đăng xuất</a></div>
               </div>
+            </div>
+          {{else}}
+            <div
+              class="w-1/5 flex justify-around items-center text-base hidden lg:flex"
+            >
+              <div class="w-1/2"><a href="/login" class="hover:underline">Đăng
+                  nhập</a></div>
+              <div
+                class="bg-green-600 p-2 text-white w-1/2 flex justify-center rounded-lg"
+              >
+                <a href="/register">Đăng ký</a>
+              </div>
+            </div>
+          {{/if}}
+          <!--Dropdown menu-->
+          <div class="relative inline-block text-left lg:hidden">
+            <div>
+              <button
+                type="button"
+                class="menu close text-xs inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-2 py-1 bg-white text-gray-700 hover:bg-gray-50 focus:outline-none"
+                id="menu-button"
+                aria-expanded="true"
+                aria-haspopup="true"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  aria-hidden="true"
+                  role="img"
+                  class="iconify iconify--mdi"
+                  width="32"
+                  height="32"
+                  preserveAspectRatio="xMidYMid meet"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"
+                    fill="currentColor"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+            <div
+              class="submenu hidden origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 divide-y divide-gray-100 focus:outline-none"
+              role="menu"
+              aria-orientation="vertical"
+              aria-labelledby="menu-button"
+              tabindex="-1"
+            >
               <div class="py-1" role="none">
-                <a href="/logout" class="text-gray-700 block px-4 py-2 text-sm hover:bg-green-500" role="menuitem" tabindex="-1" id="menu-item-6">Đăng xuất</a>
+                {{#if session.user}}
+                  {{#if session.user.isAdmin}}{{else}}
+                    <a
+                      href="/{{session.user._id}}"
+                      class="text-gray-700 block px-4 py-2 text-sm hover:bg-green-500"
+                      role="menuitem"
+                      tabindex="-1"
+                      id="menu-item-0"
+                    >Trang cá nhân</a>
+                  {{/if}}
+                {{else}}
+                  <a
+                    href="/login"
+                    class="text-gray-700 block px-4 py-2 text-sm hover:bg-green-500"
+                    role="menuitem"
+                    tabindex="-1"
+                    id="menu-item-0"
+                  >Đăng nhập</a>
+                  <a
+                    href="/register"
+                    class="text-gray-700 block px-4 py-2 text-sm hover:bg-green-500"
+                    role="menuitem"
+                    tabindex="-1"
+                    id="menu-item-1"
+                  >Đăng ký</a>
+                {{/if}}
               </div>
-            {{/if}}
+              {{#if session.user}}
+                <div class="py-1 md:hidden" role="none">
+                  {{#if session.user.isAdmin}}
+                    <a
+                      href="/admin/posts"
+                      class="text-gray-700 block px-4 py-2 text-sm hover:bg-green-500"
+                      role="menuitem"
+                      tabindex="-1"
+                      id="menu-item-4"
+                    >Quản lý bài đăng</a>
+                    <a
+                      href="/admin/users"
+                      class="text-gray-700 block px-4 py-2 text-sm hover:bg-green-500"
+                      role="menuitem"
+                      tabindex="-1"
+                      id="menu-item-5"
+                    >Quản lý người dùng</a>
+                  {{else}}
+                    <a
+                      href="#"
+                      class="text-gray-700 block px-4 py-2 text-sm hover:bg-green-500"
+                      role="menuitem"
+                      tabindex="-1"
+                      id="menu-item-4"
+                    >Quản lý bài đăng</a>
+                    <a
+                      href="/message"
+                      class="text-gray-700 block px-4 py-2 text-sm hover:bg-green-500"
+                      role="menuitem"
+                      tabindex="-1"
+                      id="menu-item-5"
+                    >Tin nhắn</a>
+                  {{/if}}
+                </div>
+                <div class="py-1" role="none">
+                  <a
+                    href="/logout"
+                    class="text-gray-700 block px-4 py-2 text-sm hover:bg-green-500"
+                    role="menuitem"
+                    tabindex="-1"
+                    id="menu-item-6"
+                  >Đăng xuất</a>
+                </div>
+              {{/if}}
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <!--Search bar and post button-->
-  <div class="flex justify-center items-center bg-gray-800">
-    <div class="w-full max-w-screen-xl flex justify-center items-center">
-      <div class="w-1/2 flex justify-start my-5">
-        <div class="flex justify-center items-center bg-white rounded-l-lg pl-2 text-gray-400">
-          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--carbon" width="32" height="32"
-            preserveAspectRatio="xMidYMid meet" viewBox="0 0 32 32">
-            <path d="M29 27.586l-7.552-7.552a11.018 11.018 0 1 0-1.414 1.414L27.586 29zM4 13a9 9 0 1 1 9 9a9.01 9.01 0 0 1-9-9z" fill="currentColor"></path>
-          </svg>
+    <!--Search bar and post button-->
+    <div class="flex justify-center items-center bg-gray-800">
+      <div class="w-full max-w-screen-xl flex justify-center items-center">
+        <div class="w-1/2 flex justify-start my-5">
+          <div
+            class="flex justify-center items-center bg-white rounded-l-lg pl-2 text-gray-400"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              aria-hidden="true"
+              role="img"
+              class="iconify iconify--carbon"
+              width="32"
+              height="32"
+              preserveAspectRatio="xMidYMid meet"
+              viewBox="0 0 32 32"
+            >
+              <path
+                d="M29 27.586l-7.552-7.552a11.018 11.018 0 1 0-1.414 1.414L27.586 29zM4 13a9 9 0 1 1 9 9a9.01 9.01 0 0 1-9-9z"
+                fill="currentColor"
+              ></path>
+            </svg>
+          </div>
+          <div class="w-3/4">
+            <input
+              type="text"
+              class="w-full h-10 rounded-r-lg p-2 focus:outline-none"
+              placeholder="Tìm kiếm trên Thrift Market ..."
+            />
+          </div>
         </div>
-        <div class="w-3/4">
-          <input type="text" class="w-full h-10 rounded-r-lg p-2 focus:outline-none" placeholder="Tìm kiếm trên Thrift Market ...">
-        </div>
+        <a
+          href="/post/create"
+          class="flex justify-center items-center bg-white py-2 px-5 rounded-lg text-green-600 hover:underline cursor-pointer"
+        >
+          <div>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              aria-hidden="true"
+              role="img"
+              class="iconify iconify--ic"
+              width="24"
+              height="24"
+              preserveAspectRatio="xMidYMid meet"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M17 19.22H5V7h7V5H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-7h-2v7.22z"
+                fill="currentColor"
+              ></path>
+              <path
+                d="M19 2h-2v3h-3c.01.01 0 2 0 2h3v2.99c.01.01 2 0 2 0V7h3V5h-3V2zM7 9h8v2H7zm0 3v2h8v-2h-3zm0 3h8v2H7z"
+                fill="currentColor"
+              ></path>
+            </svg>
+          </div>
+          <div>Đăng bài</div>
+        </a>
       </div>
-      <a href="/post/create" class="flex justify-center items-center bg-white py-2 px-5 rounded-lg text-green-600 hover:underline cursor-pointer">
-        <div>
-          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--ic" width="24" height="24"
-            preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
-            <path d="M17 19.22H5V7h7V5H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-7h-2v7.22z" fill="currentColor"></path>
-            <path d="M19 2h-2v3h-3c.01.01 0 2 0 2h3v2.99c.01.01 2 0 2 0V7h3V5h-3V2zM7 9h8v2H7zm0 3v2h8v-2h-3zm0 3h8v2H7z" fill="currentColor"></path>
-          </svg>
-        </div>
-        <div>Đăng bài</div>
-      </a>
     </div>
-  </div>
-  {{{body}}}
+    {{{body}}}
 
-  <footer class="bg-gray-800 p-10">
-    <p class="text-center text-white">KẾT NỐI VỚI CHÚNG TÔI</p>
-    <div class="flex justify-center mb-6">
-      <a href="#" class="w-16 h-16 text-center m-4" style="border-radius: 50%; line-height: 5rem; background-color: #71ace8">
-        <i class="fab fa-facebook-f text-4xl text-white"></i>
-      </a>
-      <a href="#" class="w-16 h-16 text-center m-4" style="border-radius: 50%; line-height: 5rem; background-color: #71ace8">
-        <i class="fab fa-twitter text-4xl text-white"></i>
-      </a>
-      <a href="#" class="w-16 h-16 text-center m-4" style="border-radius: 50%; line-height: 5rem; background-color: #71ace8">
-        <i class="fab fa-instagram text-4xl text-white"></i>
-      </a>
-      <a href="#" class="w-16 h-16 text-center m-4" style="border-radius: 50%; line-height: 5rem; background-color: #71ace8">
-        <i class="fab fa-google text-4xl text-white"></i>
-      </a>
-    </div>
-    
-    <div id="footer-menu" class="flex justify-center m-2">
-      <a href="#" class="text-white text-sm font-white font-bold px-4 py-1" style="border-right: 1px solid #467171">TRANG CHỦ</a>
-      <a href="#" class="text-white text-sm font-white font-bold px-4 py-1" style="border-right: 1px solid #467171">QUẢN LÝ BÀI ĐĂNG</a>
-      <a href="/message" class="text-white text-sm font-white font-bold px-4 py-1" style="border-right: 1px solid #467171">TIN NHẮN</a>
-      <a href="#" class="text-white text-sm font-white font-bold px-4 py-1">ĐĂNG BÀI</a>
-    </div>
+    <footer class="bg-gray-800 p-10">
+      <p class="text-center text-white">KẾT NỐI VỚI CHÚNG TÔI</p>
+      <div class="flex justify-center mb-6">
+        <a
+          href="#"
+          class="w-16 h-16 text-center m-4"
+          style="border-radius: 50%; line-height: 5rem; background-color: #71ace8"
+        >
+          <i class="fab fa-facebook-f text-4xl text-white"></i>
+        </a>
+        <a
+          href="#"
+          class="w-16 h-16 text-center m-4"
+          style="border-radius: 50%; line-height: 5rem; background-color: #71ace8"
+        >
+          <i class="fab fa-twitter text-4xl text-white"></i>
+        </a>
+        <a
+          href="#"
+          class="w-16 h-16 text-center m-4"
+          style="border-radius: 50%; line-height: 5rem; background-color: #71ace8"
+        >
+          <i class="fab fa-instagram text-4xl text-white"></i>
+        </a>
+        <a
+          href="#"
+          class="w-16 h-16 text-center m-4"
+          style="border-radius: 50%; line-height: 5rem; background-color: #71ace8"
+        >
+          <i class="fab fa-google text-4xl text-white"></i>
+        </a>
+      </div>
 
-  </footer>
+      <div id="footer-menu" class="flex justify-center m-2">
+        <a
+          href="#"
+          class="text-white text-sm font-white font-bold px-4 py-1"
+          style="border-right: 1px solid #467171"
+        >TRANG CHỦ</a>
+        <a
+          href="#"
+          class="text-white text-sm font-white font-bold px-4 py-1"
+          style="border-right: 1px solid #467171"
+        >QUẢN LÝ BÀI ĐĂNG</a>
+        <a
+          href="/message"
+          class="text-white text-sm font-white font-bold px-4 py-1"
+          style="border-right: 1px solid #467171"
+        >TIN NHẮN</a>
+        <a
+          href="#"
+          class="text-white text-sm font-white font-bold px-4 py-1"
+        >ĐĂNG BÀI</a>
+      </div>
 
-  <div class="py-6 px-20 flex" style="background-color: #d0d0c3;">
-      <div class="text-5xl font-extrabold text-green-600"><a href="/">Thrift Market</a></div>
+    </footer>
+
+    <div class="py-6 px-20 flex" style="background-color: #d0d0c3;">
+      <div class="text-5xl font-extrabold text-green-600"><a href="/">Thrift
+          Market</a></div>
       <div class="flex flex-auto justify-end">
         <a href="#" class="mx-4">
-          <img src="https://frontend.tikicdn.com/_desktop-next/static/img/icons/appstore.png" style="height: 50px;">
+          <img
+            src="https://frontend.tikicdn.com/_desktop-next/static/img/icons/appstore.png"
+            style="height: 50px;"
+          />
         </a>
         <a href="#" class="mx-4">
-          <img src="https://frontend.tikicdn.com/_desktop-next/static/img/icons/playstore.png" style="height: 50px;">
+          <img
+            src="https://frontend.tikicdn.com/_desktop-next/static/img/icons/playstore.png"
+            style="height: 50px;"
+          />
         </a>
       </div>
-  </div>
+    </div>
 
-  <script type="text/javascript" src="/js/main.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js" integrity="sha512-lbwH47l/tPXJYG9AcFNoJaTMhGvYWhVM9YI43CT+uteTRRaiLCui8snIgyAN8XWgNjNhCqlAUdzZptso6OCoFQ=="
-    crossorigin="anonymous"></script>
-  {{{_sections.js}}}
-</body>
+    <script
+      src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"
+      type="text/javascript"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+      integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"
+      integrity="sha512-lbwH47l/tPXJYG9AcFNoJaTMhGvYWhVM9YI43CT+uteTRRaiLCui8snIgyAN8XWgNjNhCqlAUdzZptso6OCoFQ=="
+      crossorigin="anonymous"
+    ></script>
+    <script type="text/javascript" src="/js/main.js"></script>
+    {{{_sections.js}}}
+  </body>
 </html>
