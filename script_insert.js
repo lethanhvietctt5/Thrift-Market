@@ -1,6 +1,7 @@
 const User = require("./models/User");
 const Category = require("./models/Category");
-const { users, categories } = require("./dumbData");
+const Post = require("./models/Post")
+const { users, categories, posts } = require("./dumbData");
 const bcrypt = require("bcrypt");
 
 module.exports = async function () {
@@ -19,6 +20,14 @@ module.exports = async function () {
     if (!category) {
       category = new Category(categories[i]);
       await category.save();
+    }
+  }
+
+  for (let i = 0; i < posts.length; i++) {
+    let post = await Post.findOne({ title: posts[i].title, author: posts[i].author });
+    if (!post) {
+      post = new post(posts[i]);
+      await post.save();
     }
   }
   let admin = {
