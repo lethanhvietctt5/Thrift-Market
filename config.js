@@ -20,7 +20,7 @@ module.exports = function config(app) {
   );
 
   mongoose.set("useCreateIndex", true);
-
+  app.use(express.static(__dirname + "/public"));
   app.use(express.urlencoded({ extended: false }));
   app.use(express.json());
   app.use(
@@ -67,8 +67,6 @@ module.exports = function config(app) {
       },
     })
   );
-
-  app.use(express.static(__dirname + "/public"));
 };
 
 const handlebars = hbs.create({});

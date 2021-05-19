@@ -14,7 +14,8 @@ passport.use(
           return done(null, false, {
             message: "Tài khoản của bạn đã bị khóa!",
           });
-        if (await bcrypt.compareSync(password, user.password)) {
+        let check = await bcrypt.compareSync(password, user.password);
+        if (check) {
           return done(null, user);
         } else {
           return done(null, false, {
@@ -31,9 +32,11 @@ passport.use(
 );
 
 passport.serializeUser(function (user, done) {
-  done(null, user);
+  done(null, user._id);
 });
 
-passport.deserializeUser((user, done) => {
-  done(null, user);
+passport.deserializeUser(async (id, done) => {
+  const user = await User.findOne({ _id: id });
+  if (user) done(null, user);
+  else done(null, false);
 });

@@ -16,7 +16,7 @@ router.post(
 
 router.get("/", (req, res) => {
   if (typeof req.user !== "undefined") {
-    return res.redirect("/")
+    return res.redirect("/");
   }
   return res.render("login");
 });
