@@ -1,49 +1,64 @@
-<div class="mb-20 mt-10">
+<div class="my-20">
   <div class="flex justify-center items-center">
-    <div class="w-8/12">
+    <div class="w-4/5 lg:w-3/5 sm:flex justify-between items-start">
       <div class="flex justify-start items-center">
-        <div class="icon_profile w-44 text-gray-400">
-          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--ph" preserveAspectRatio="xMidYMid meet"
-            viewBox="0 0 256 256">
+        <div class="text-xl text-gray-400">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            aria-hidden="true"
+            role="img"
+            class="iconify iconify--ph"
+            width="80"
+            height="80"
+            preserveAspectRatio="xMidYMid meet"
+            viewBox="0 0 256 256"
+          >
             <path
               d="M228 128a100 100 0 1 0-167.29 73.91a3.97 3.97 0 0 0 .842.75a99.794 99.794 0 0 0 132.898-.001a3.966 3.966 0 0 0 .838-.748A99.763 99.763 0 0 0 228 128zm-192 0a92 92 0 1 1 157.171 64.872a75.616 75.616 0 0 0-44.507-34.04a44 44 0 1 0-41.328 0a75.618 75.618 0 0 0-44.507 34.04A91.708 91.708 0 0 1 36 128zm92 28a36 36 0 1 1 36-36a36.04 36.04 0 0 1-36 36zm-59.135 42.417a68.01 68.01 0 0 1 118.27 0a91.804 91.804 0 0 1-118.27 0z"
-              fill="currentColor"></path>
+              fill="currentColor"
+            ></path>
           </svg>
         </div>
-        <div class="text-sm">
-          <div class="text-lg">Thông tin cá nhân</div>
-          <div><span class="text-gray-500 italic mr-4">Họ tên: </span>{{session.user.name}}</div>
-          <div><span class="text-gray-500 italic mr-4">Ngày sinh: </span><span id="birth">{{session.user.birth}}</span></div>
-          <div><span class="text-gray-500 italic mr-4">Giới tính: </span>{{session.user.gender}}</div>
-          <div><span class="text-gray-500 italic mr-4">Email: </span>{{session.user.email}}</div>
-          <div><span class="text-gray-500 italic mr-4">Số ĐT: </span>{{session.user.phone}}</div>
+        <div>
+          <div class="text-3xl">{{session.user.name}}</div>
+          <div class="text-xs italic text-green-600 mt-2"><a
+              href="/{{session.user._id}}/edit_profile"
+            >Chỉnh sửa thông tin cá nhân</a></div>
         </div>
       </div>
-      <div class="sm:flex justify-start items-center">
-        <div class="w-40 ml-5 mt-5 sm:mt-0 mr-10 flex justify-center items-center px-4 py-1 rounded-lg bg-gray-300 text-sm text-gray-600">
-          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--ri" width="32" height="32"
-            preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
-            <path
-              d="M5 19h1.414l9.314-9.314l-1.414-1.414L5 17.586V19zm16 2H3v-4.243L16.435 3.322a1 1 0 0 1 1.414 0l2.829 2.829a1 1 0 0 1 0 1.414L9.243 19H21v2zM15.728 6.858l1.414 1.414l1.414-1.414l-1.414-1.414l-1.414 1.414z"
-              fill="currentColor"></path>
-          </svg>
-          <a href="#"><button class="">Chỉnh sửa</button></a>
+      <div class="w-4/5 ml-5 sm:ml-0 sm:w-2/5 text-sm">
+        <div class="w-full flex justify-between items-center">
+          <div class="w-2/5">
+            <span class="text-gray-500 italic mr-4">Ngày sinh: </span>
+          </div>
+          <div class="w-3/5 birth">{{session.user.birth}}</div>
         </div>
-        <div class="w-40 ml-5 mt-5 sm:mt-0 sm:ml-0 flex justify-center items-center px-4 py-1 rounded-lg bg-red-800 text-sm text-white">
-          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--mdi" width="32" height="32"
-            preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
-            <path d="M19 4h-3.5l-1-1h-5l-1 1H5v2h14M6 19a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7H6v12z" fill="currentColor"></path>
-          </svg>
-          <a href="#"><button class="">Xoá tài khoản</button></a>
+        <div class="w-full flex justify-between items-center">
+          <div class="w-2/5">
+            <span class="text-gray-500 italic mr-4">Giới tính: </span>
+          </div>
+          <div class="w-3/5">{{session.user.gender}}</div>
+        </div>
+        <div class="w-full flex justify-between items-center">
+          <div class="w-2/5">
+            <span class="text-gray-500 italic mr-4">Email:</span>
+          </div>
+          <div class="w-3/5">{{session.user.email}}</div>
+        </div>
+        <div class="w-full flex justify-between items-center">
+          <div class="w-2/5">
+            <span class="text-gray-500 italic mr-4">Số ĐT:</span>
+          </div>
+          <div class="w-3/5">{{session.user.phone}}</div>
         </div>
       </div>
     </div>
   </div>
-  <div>
-    <div class="w-full mt-10 flex justify-center items-center">
-      <div class="w-8/12 border-b-2">
-        <div class="text-bold text-2xl">Danh sách bài đăng</div>
-      </div>
+
+  <div class="w-full flex justify-center my-10">
+    <div class="w-4/5 lg:w-3/5 ml-5 sm:ml-0 justify-between items-center">
+      <div class="w-full text-xl font-bold">Danh sách bài đăng</div>
     </div>
   </div>
 </div>
