@@ -2,6 +2,10 @@ const express = require("express");
 require("express-async-errors");
 const config = require("./config");
 const app = express();
+const http = require("http");
+const server = http.createServer(app);
+const socketio = require("socket.io");
+const io = socketio(server);
 
 // Insert data function
 const insert = require("./script_insert");
@@ -57,6 +61,22 @@ app.get("/logout", (req, res) => {
 
 app.use("/:user_id", mdwLogged, userRoute);
 
-app.listen(PORT, () => {
+io.on("connection", (socket) => {
+  socket.on("changeID", (id) => {
+    socket.id = id;
+  });
+  socket.on("send", async ({ id, msg }) => {
+    let mess = new Message({
+      id_sender: socket.id,
+      id_receiver: id,
+      content: msg,
+      date: Date.now(),
+    });
+    await mess.save();
+    io.emit("recieve", { id, msg });
+  });
+});
+
+server.listen(PORT, () => {
   console.log(`App is running at http://localhost:${PORT}`);
 });

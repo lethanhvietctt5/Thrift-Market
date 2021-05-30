@@ -14,9 +14,46 @@ menu.onclick = function () {
     submenu.classList.add("hidden");
   }
 };
+var socket = io();
 
 $(document).ready(function () {
   let birth = $(".birth").text();
   let date = new Date(birth);
   $(".birth").text(date.toLocaleDateString());
+
+  let id = $(".id_specific").text();
+  let my_id = id;
+  socket.emit("changeID", id);
+  socket.on("recieve", ({ id, msg }) => {
+    // console.log("myID:" + my_id + "," + "recieveID:" + id);
+    if (id == my_id) {
+      let content = `<div class="w-full my-2 flex justify-start">
+      <div class="bg-gray-400 p-2 rounded-lg">${msg} </div>
+    </div>`;
+      $(".list_messages").append(content);
+      let element = document.getElementsByClassName("list_messages")[0];
+      element.scrollTop = element.scrollHeight;
+    }
+  });
+
+  $(document).on("keypress", function (e) {
+    if (e.which == 13 && !e.shiftKey) {
+      //Nhấn phím Enter
+      if ($("#input_msg").is(":focus")) {
+        let sendID = $(".my_id").text();
+        let recieveID = $("#current_user").text();
+        let msg = $("#input_msg").val();
+        if (msg.length > 0) {
+          socket.emit("send", { id: recieveID, msg: msg });
+          let content = `<div class="w-full my-2 flex justify-end">
+          <div class="bg-green-600 p-2 rounded-lg">${msg} </div>
+          </div>`;
+          $(".list_messages").append(content);
+          $("#input_msg").val("");
+          let element = document.getElementsByClassName("list_messages")[0];
+          element.scrollTop = element.scrollHeight;
+        }
+      }
+    }
+  });
 });

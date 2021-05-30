@@ -1,116 +1,3 @@
-function reloadPage() {
-  $("#boxchat").scrollTop($("#boxchat").prop("scrollHeight"));
-  $.get({
-    url: `/getUsersChatted`,
-    success: function (data) {
-      if (data.length > 0) {
-        for (i = 0; i < data.length; i++) {
-          if (data[i].gender == "Nam") avatar = "/images/avatars/male.jpg";
-          else avatar = "/images/avatars/female.jpg";
-          $("#user-box").append(`
-                        <a href="/message/${data[i]._id}" class="user cursor-pointer flex items-center p-3 hover:bg-gray-100 transition duration-300 ease-in-out"
-                            data-id="${data[i]._id}" style="height:80px; border-bottom: 1px solid rgb(233, 226, 226);">
-                            <img src="${avatar}" style="height: 50px; border-radius: 50%; border: 1px solid black;">
-                            <p class="font-bold text-sm pl-3">${data[i].name}</p>
-                        </a>
-                    `);
-        }
-      } else {
-        $("#user-box").append(
-          `<img src="images/no-user.png" style="margin-top:100px;">`
-        );
-      }
-    },
-  });
-}
-
-function loadChatbox() {
-  if ($("#selected-user").data("id") != "") {
-    $.get({
-      url: `/loadChatbox/${$("#selected-user").data("id")}`,
-      success: function (data) {
-        for (i = 0; i < data.length; i++) {
-          if (data[i].id_sender != $("#user-info").data("id")) {
-            $("#boxchat").append(`
-                        <div class="w-full flex">
-                            <div class="rounded-2xl break-words bg-red-300 text-white mx-3 my-1 p-2" style="width: fit-content; max-width: 70%;">
-                                <p>${data[i].content}</p>
-                            </div>
-                        </div>`);
-          } else {
-            $("#boxchat").append(`
-                        <div class="w-full flex justify-end">
-                            <div class="rounded-2xl break-words bg-purple-300 text-white mx-3 my-1 p-2" style="width: fit-content; max-width: 70%;">
-                                <p>${data[i].content}</p>
-                            </div>
-                        </div>`);
-          }
-          $("#boxchat").stop(true, true);
-          $("#boxchat").animate(
-            { scrollTop: $("#boxchat").prop("scrollHeight") },
-            1000
-          );
-        }
-      },
-    });
-  }
-}
-
-reloadPage();
-loadChatbox();
-
-$(".user").click(function () {
-  $("#message").val("");
-  // Load chat screen here
-  reloadPage();
-});
-
-$(document).on("keypress", function (e) {
-  if (e.which == 13 && !e.shiftKey) {
-    //Nhấn phím Enter
-    if ($("#message").is(":focus")) {
-      e.preventDefault();
-      if ($("#message").val()) {
-        data = {
-          id_sender: $("#user-info").data("id"),
-          id_receiver: $("#selected-user").data("id"),
-          content: $("#message").val(),
-          date: new Date(),
-        };
-        $.post({
-          url: "/sendMessage",
-          data: JSON.stringify(data),
-          async: false,
-          contentType: "application/json; charset=utf-8",
-          success: function (data) {
-            if (data == true) {
-              $("#boxchat").append(`
-                            <div class="w-full flex justify-end">
-                                <div class="rounded-2xl break-words bg-purple-300 text-white mx-3 my-1 p-2" style="width: fit-content; max-width: 70%;">
-                                    <p>${$("#message").val()}</p>
-                                </div>
-                            </div>`);
-              $("#boxchat").stop(true, true);
-              $("#boxchat").animate(
-                { scrollTop: $("#boxchat").prop("scrollHeight") },
-                1000
-              );
-            } else {
-              Swal.fire({
-                icon: "error",
-                title: "Gửi không thành công...",
-                text: "Có lỗi trong quá trình gửi tin nhắn!",
-              });
-            }
-          },
-        });
-
-        $("#message").val("");
-      }
-    }
-  }
-});
-
 function addLoading() {
   let content = `<div class="w-full h-full flex justify-center items-center">
     <div class="text-green-600">
@@ -131,11 +18,11 @@ function getMessage(id) {
       let content = "";
       for (let i = 0; i < data.result.length; i++) {
         if (data.result[i].isSend) {
-          content += `<div class="w-full flex justify-end">
+          content += `<div class="w-full my-2 flex justify-end">
             <div class="bg-green-600 p-2 rounded-lg">${data.result[i].content} </div>
           </div>`;
         } else {
-          content += `<div class="w-full flex justify-start">
+          content += `<div class="w-full my-2 flex justify-start">
             <div class="bg-gray-400 p-2 rounded-lg">${data.result[i].content} </div>
           </div>`;
         }
@@ -159,4 +46,24 @@ $(document).ready(function () {
 $(document).ready(function () {
   let slectedUser = $("#current_user").text();
   getMessage(slectedUser);
+  $(".contact_item").removeClass("bg-gray-200");
+  $("#" + slectedUser).addClass("bg-gray-200");
+  let list_contact = $("#list_temp").children();
+  let string_lc = "";
+  for (let i = 0; i < list_contact.length; i++) {
+    string_lc += "," + list_contact[i].innerHTML;
+  }
+  let arr = string_lc.split(",");
+  console.log(arr);
+  for (let i = 1; i < arr.length; i++) {
+    $("#" + arr[i]).click(function () {
+      $(".contact_item").removeClass("bg-gray-200");
+      $(this).addClass("bg-gray-200");
+      let name = $(this).children()[1].innerHTML;
+      $(".select_chat").text(name);
+      $("#current_user").text(arr[i]);
+      let slectedUser = $("#current_user").text();
+      getMessage(slectedUser);
+    });
+  }
 });

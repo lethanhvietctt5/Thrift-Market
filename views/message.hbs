@@ -6,9 +6,10 @@
       </div>
       <div>
         {{#each list_contact}}
-          <div class="px-2" id="{{this._id}}">
+          <div class="px-2 py-1">
             <div
-              class="w-full flex justify-start items-center rounded-lg cursor-pointer hover:bg-gray-200 transition delay-150 duration-300 ease-in-out p-4"
+              id="{{this._id}}"
+              class="w-full contact_item flex justify-start items-center rounded-lg cursor-pointer hover:bg-gray-200 transition delay-150 duration-300 ease-in-out p-4"
             >
               <div class="w-1/6 mr-2"><img
                   class="rounded-full"
@@ -19,30 +20,26 @@
             </div>
           </div>
         {{/each}}
+        <div id="list_temp" class="hidden">
+          {{#each list_contact}}
+            <div>{{this._id}}</div>
+          {{/each}}
+        </div>
+
       </div>
     </div>
     <div class="w-3/4 h-full">
       <div class="message_area">
         <div class="flex justify-center items-center py-4 border-b-2">
-          <div class="text-lg font-semibold">{{first.name}}</div>
+          <div class="select_chat text-lg font-semibold">{{first.name}}</div>
         </div>
         <div class="message w-full h-5/6">
-          <div
-            class="list_messages w-full h-full p-4 overflow-y-scroll no-scrollbar"
-          >
-            <div class="w-full flex justify-end">
-              <div class="bg-green-600 p-2 rounded-lg">Alo </div>
-            </div>
-            <div class="w-full flex justify-start">
-              <div class="bg-gray-400 p-2 rounded-lg">Alo </div>
-            </div>
-
-          </div>
         </div>
       </div>
       <div class="h-20 flex justify-center p-2">
         <div class="input h-5/6 flex justify-center items-center"><input
             type="text"
+            id="input_msg"
             placeholder="Nhập nội dung tin nhắn ..."
             class="w-full h-5/6 border-2 rounded-full mr-4 p-2 focus:outline-none"
           />
@@ -72,6 +69,7 @@
 </div>
 
 <div id="current_user" class="hidden">{{first._id}}</div>
+<div id="my_id" class="hidden">{{session.user._id}}</div>
 
 {{#section "js"}}
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
