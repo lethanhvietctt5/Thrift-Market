@@ -1,54 +1,44 @@
-<div class="w-full">
-    <div class="sliderAx w-11/12 h-2/3" style="margin-left: 4.1666665%;">
-        <div id="slider-1" class="container mx-auto">
-            <div class="bg-cover bg-center h-auto text-white py-40 px-10 object-fill"
-                style="background-image: url(https://images.unsplash.com/photo-1472851294608-062f824d29cc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80);">
-                <div class="md:w-1/2">
-                    <p class="text-xl mb-2 uppercase" style="text-shadow: rgb(0, 0, 0) 1px 0 10px;">thrift market</p>
-                    <p class="text-5xl font-bold" style="text-shadow: rgb(0, 0, 0) 1px 0 10px;">TÌM MUA</p>
-                    <p class="text-xl mt-2 mb-10 leading-none" style="text-shadow: rgb(0, 0, 0) 1px 0 10px;">Tìm kiếm sản phẩm đang được rao bán từ người dùng khác trên nền tảng Thrift Market</p>
-                    <a href="#" class="bg-transparent py-4 px-8 text-white font-bold uppercase text-xs
-            rounded-full hover:bg-gray-200 hover:text-gray-800 transition duration-500 ease-in-out" style="border: 1px solid;">Tìm kiếm</a>
+<div class="w-full justify-center">
+    <div class="w-full flex justify-center">
+        <div class="w-9/12 h-96 slide">
+            <div class="slide1 w-full h-full content-slide flex items-end bg-cover bg-center text-white">
+                <div class="mb-10 pl-10">
+                    <p class="text-4xl font-bold mb-5">TÌM MUA</p>
+                    <p class="text-xl mb-5">Tìm kiếm sản phẩm đang được rao bán từ người dùng khác trên nền tảng Thrift Market</p>
+                    <button class="border-2 rounded py-2 px-6">Tìm kiếm</button>
                 </div>
-            </div> <!-- container -->
-            <br>
-        </div>
-        <div id="slider-2" class="container mx-auto">
-            <div class="bg-cover bg-top h-auto text-white py-40 px-10 object-fill"
-                style="background-image: url(https://images.unsplash.com/photo-1520006403909-838d6b92c22e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80)">
-                <p class="text-xl mb-2 uppercase" style="text-shadow: rgb(0, 0, 0) 10px 0 10px;">thrift market</p>
-                <p class="text-5xl font-bold" style="text-shadow: rgb(0, 0, 0) 10px 0 10px;">RAO BÁN</p>
-                <p class="text-xl mt-2 mb-10 leading-none" style="text-shadow: rgb(0, 0, 0) 10px 0 10px;">Đăng bài quảng bá sản phẩm đến với những người dùng khác qua nền tảng Thrift Market</p>
-                <a href="#" class="bg-transparent py-4 px-8 text-white font-bold uppercase text-xs 
-            rounded-full hover:bg-gray-200 hover:text-gray-800 transition duration-500 ease-in-out" style="border: 1px solid;">Đăng bài</a>
-            </div> <!-- container -->
-            <br>
-        </div>
-    </div>
-    <div class="flex justify-between w-12 mx-auto pb-2" style="position: relative; top: -60px;">
-        <button id="sButton1" onclick="sliderButton1()" class="rounded-full w-4 pb-2 " style="background-color: rgba(255, 255, 255)"></button>
-        <button id="sButton2" onclick="sliderButton2() " class="rounded-full w-4 p-2" style="background-color: rgba(255, 255, 255, 0.5)"></button>
-    </div>
-    <div class="w-11/12 flex text-green-500" style="margin-left: 4.1666665%;">
-        <div class="w-1/3 flex justify-center">
-            <i class="fas fa-filter text-4xl mx-3"></i>
-            <div>
-                <p class="font-sans font-medium text-sm">BỘ LỌC</p>
-                <p class="font-sans font-medium text-xs">Hỗ trợ lọc kết quả tìm kiếm</p>
+            </div>
+            <div class="slide2 w-full h-full content-slide flex items-end bg-cover bg-center text-white">
+                <div class="mb-10 pl-10">
+                    <p class="text-4xl font-bold mb-5">RAO BÁN</p>
+                    <p class="text-xl mb-5">Đăng bài quảng bá sản phẩm đến với những người dùng khác qua nền tảng Thrift Market</p>
+                    <button class="border-2 rounded py-2 px-6">Đăng bài</button>
+                </div>
             </div>
         </div>
-        <div class="w-1/3 flex justify-center">
-            <i class="far fa-comment-dots text-4xl mx-3"></i>
-            <div>
-                <p class="font-sans font-medium text-sm">ONLINE CHAT</p>
-                <p class="font-sans font-medium text-xs">Tương tác trực tuyến với nhau</p>
+    </div>
+    <div class="w-full flex justify-center">
+        <div class="w-9/12 flex justify-center my-5 sm:my-10 px-4 text-green-500">
+            <div class="w-1/3 flex justify-center">
+                <i class="fas fa-filter text-4xl mx-3"></i>
+                <div>
+                    <p class="font-sans font-medium text-sm">BỘ LỌC</p>
+                    <p class="font-sans font-medium text-xs">Hỗ trợ lọc kết quả tìm kiếm</p>
+                </div>
             </div>
-        </div>
-        <div class="w-1/3 flex justify-center">
-            <i class="fas fa-headset text-4xl mx-3"></i>
-            <div>
-                <p class="font-sans font-medium text-sm">HỖ TRỢ 24/7</p>
-                <p class="font-sans font-medium text-xs">Hỗ trợ duyệt bài 24 giờ trong ngày</p>
+            <div class="w-1/3 flex justify-center">
+                <i class="far fa-comment-dots text-4xl mx-3"></i>
+                <div>
+                    <p class="font-sans font-medium text-sm">ONLINE CHAT</p>
+                    <p class="font-sans font-medium text-xs">Tương tác trực tuyến với nhau</p>
+                </div>
+            </div>
+            <div class="w-1/3 flex justify-center">
+                <i class="fas fa-headset text-4xl mx-3"></i>
+                <div>
+                    <p class="font-sans font-medium text-sm">HỖ TRỢ 24/7</p>
+                    <p class="font-sans font-medium text-xs">Hỗ trợ duyệt bài 24 giờ trong ngày</p>
+                </div>
             </div>
         </div>
     </div>
@@ -106,5 +96,7 @@
         </div>
     </div>
     {{#section "js"}}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"
+            integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script type="text/javascript" src="/js/index.js"></script>
     {{/section}}

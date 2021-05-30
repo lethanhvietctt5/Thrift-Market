@@ -1,32 +1,58 @@
-<div class="w-3/4 grid grid-cols-3" style="margin-left: 12.5%;">
-    <div style="height: 700px;">
-        <div id="user-info" data-id="{{session.user._id}}" style="border-bottom: 1px solid rgba(0,0,0,0.25); height: 85px;">
-            <a href="/{{session.user._id}}" class="flex p-3 items-center" style="width: fit-content;">
-                <img src="/images/avatars/{{#ifEquals session.user.gender "Nam"}}male{{else}}female{{/ifEquals}}.jpg" style="height: 60px; border-radius: 50%; border: 1px solid black;">
-                <p class="font-bold text-l pl-3">{{session.user.name}}</p>
-            </a>
+<div class="w-full h-3/4 flex justify-center">
+  <div class="w-9/12 flex justify-center border-l-2 border-r-2">
+    <div class="w-1/4 pt-10 border-r-2">
+      <div class="w-full flex justify-center text-2xl font-semibold">
+        <div>Tin nhắn</div>
+      </div>
+      <div>
+        <div class="px-2">
+          <div
+            class="w-full flex justify-start items-center rounded-lg cursor-pointer hover:bg-gray-200 transition delay-150 duration-300 ease-in-out p-4"
+          >
+            <div class="w-1/6 mr-2"><img
+                class="rounded-full"
+                src="/images/avatars/male.jpg"
+                alt=""
+              /></div>
+            <div>Lê Thành Việt</div>
+          </div>
         </div>
-        <p class="text-center uppercase font-bold text-sm py-3" style="height:45px;">Tin nhắn</p>
-        <div id="user-box" class="flex flex-col overflow-auto" style="height:570px;"></div>
+
+        <div class="px-2">
+          <div
+            class="w-full flex justify-start items-center rounded-lg cursor-pointer hover:bg-gray-200 transition delay-150 duration-300 ease-in-out p-4"
+          >
+            <div class="w-1/6 mr-2"><img
+                class="rounded-full"
+                src="/images/avatars/male.jpg"
+                alt=""
+              /></div>
+            <div>Lê Thành Việt</div>
+          </div>
+        </div>
+
+        <div class="px-2">
+          <div
+            class="w-full flex justify-start items-center rounded-lg cursor-pointer hover:bg-gray-200 transition delay-150 duration-300 ease-in-out p-4"
+          >
+            <div class="w-1/6 mr-2"><img
+                class="rounded-full"
+                src="/images/avatars/male.jpg"
+                alt=""
+              /></div>
+            <div>Lê Thành Việt</div>
+          </div>
+        </div>
+        
+      </div>
     </div>
-    <div class="col-span-2 border relative flex flex-col" style="height:700px;">
-        <div id="selected-user" data-id="{{selectedUser._id}}" class="flex flex-col p-3 items-center" style="height:115px;">
-            {{#if selectedUser}}
-                <img src="/images/avatars/{{#ifEquals selectedUser.gender "Nam"}}male{{else}}female{{/ifEquals}}.jpg" style="height: 60px; border-radius: 50%; border: 1px solid black;">
-                <p class="font-bold text-l mt-1">{{selectedUser.name}}</p>
-            {{/if}}
-        </div>
-        <div id="boxchat" class="w-full overflow-y-scroll shadow-inner border flex flex-col justify-start" style="margin-bottom: 50px; height:585px;">
-        </div>
-        <div class="absolute -bottom-0 w-full">
-            <textarea name="message" id="message" placeholder="Viết tin nhắn..."
-            class="break-words w-11/12 resize-none rounded-full border-2 px-3 outline-none" 
-            style="margin-left: 4.1666665%; height:40px; line-height:35px;"></textarea>
-        </div>
+    <div class="w-3/4">
+
     </div>
+  </div>
 </div>
 
 {{#section "js"}}
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-    <script type="text/javascript" src="/js/message.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+  <script type="text/javascript" src="/js/message.js"></script>
 {{/section}}

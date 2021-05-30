@@ -33,6 +33,22 @@
       integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
       crossorigin="anonymous"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"
+      integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"
+      integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
     <title>Thrift Market</title>
   </head>
 
@@ -49,21 +65,30 @@
             <div
               class="text-4xl mr-10 xl:mr-20 font-extrabold text-green-600"
             ><a href="/">Thrift Market</a></div>
-            <div
-              class="w-1/2 xl:w-3/5 flex justify-between text-base hidden md:flex"
-            >
-              <div class="cursor-pointer hover:underline"><a href="/">Trang chủ</a></div>
-              <div class="cursor-pointer hover:underline">Quản lý bài đăng</div>
-              {{#if session.user.isAdmin}}
+            {{#if session.user.isAdmin}}
+              <div
+                class="w-1/2 xl:w-3/5 flex justify-between text-base hidden md:flex"
+              >
+                <div class="cursor-pointer hover:underline"><a href="/">Trang
+                    chủ</a></div>
+                <div class="cursor-pointer hover:underline">Quản lý bài đăng</div>
                 <div class="cursor-pointer hover:underline"><a
                     href="/admin/users"
                   >Quản lý người dùng</a></div>
-              {{else}}
+              </div>
+            {{else}}
+              <div
+                class="w-1/2 xl:w-2/5 flex justify-between text-base hidden md:flex"
+              >
+                <div class="cursor-pointer hover:underline"><a href="/">Trang
+                    chủ</a></div>
+                <div class="cursor-pointer hover:underline">Quản lý bài đăng</div>
                 <div class="cursor-pointer hover:underline"><a
                     href="/message"
                   >Tin nhắn</a></div>
-              {{/if}}
-            </div>
+              </div>
+            {{/if}}
+
           </div>
           {{#if session.user}}
             <div
@@ -114,7 +139,7 @@
             </div>
           {{/if}}
           <!--Dropdown menu-->
-          <div class="relative inline-block text-left lg:hidden">
+          <div class="relative z-10 inline-block text-left lg:hidden">
             <div>
               <button
                 type="button"
@@ -289,79 +314,137 @@
     </div>
     {{{body}}}
 
-    <footer class="bg-gray-800 p-10">
-      <p class="text-center text-white">KẾT NỐI VỚI CHÚNG TÔI</p>
-      <div class="flex justify-center mb-6">
-        <a
-          href="#"
-          class="w-16 h-16 text-center m-4"
-          style="border-radius: 50%; line-height: 5rem; background-color: #71ace8"
+    <div class="w-full flex justify-center h-64 bg-gray-800 bottom-0">
+      <div class="w-full sm:w-9/12 flex justify-between">
+        <div
+          class="text-3xl sm:text-5xl h-full flex items-center font-extrabold text-green-600"
         >
-          <i class="fab fa-facebook-f text-4xl text-white"></i>
-        </a>
-        <a
-          href="#"
-          class="w-16 h-16 text-center m-4"
-          style="border-radius: 50%; line-height: 5rem; background-color: #71ace8"
-        >
-          <i class="fab fa-twitter text-4xl text-white"></i>
-        </a>
-        <a
-          href="#"
-          class="w-16 h-16 text-center m-4"
-          style="border-radius: 50%; line-height: 5rem; background-color: #71ace8"
-        >
-          <i class="fab fa-instagram text-4xl text-white"></i>
-        </a>
-        <a
-          href="#"
-          class="w-16 h-16 text-center m-4"
-          style="border-radius: 50%; line-height: 5rem; background-color: #71ace8"
-        >
-          <i class="fab fa-google text-4xl text-white"></i>
-        </a>
-      </div>
+          <div>Thrift Market</div>
+        </div>
+        <div class="h-full flex items-center">
+          <div class="text-white text-lg">
+            <div class="mb-3">Về chúng tôi</div>
+            <div class="mb-3">Giới thiệu</div>
+            <div class="mb-3">Hỗ trợ khách hàng</div>
+            <div class="mb-3">Điều khoản sử dụng</div>
+          </div>
+        </div>
 
-      <div id="footer-menu" class="flex justify-center m-2">
-        <a
-          href="#"
-          class="text-white text-sm font-white font-bold px-4 py-1"
-          style="border-right: 1px solid #467171"
-        >TRANG CHỦ</a>
-        <a
-          href="#"
-          class="text-white text-sm font-white font-bold px-4 py-1"
-          style="border-right: 1px solid #467171"
-        >QUẢN LÝ BÀI ĐĂNG</a>
-        <a
-          href="/message"
-          class="text-white text-sm font-white font-bold px-4 py-1"
-          style="border-right: 1px solid #467171"
-        >TIN NHẮN</a>
-        <a
-          href="#"
-          class="text-white text-sm font-white font-bold px-4 py-1"
-        >ĐĂNG BÀI</a>
-      </div>
-
-    </footer>
-
-    <div class="py-6 px-20 flex" style="background-color: #d0d0c3;">
-      <div class="text-5xl font-extrabold text-green-600"><a href="/">Thrift
-          Market</a></div>
-      <div class="flex flex-auto justify-end">
-        <a href="#" class="mx-4">
-          <img
-            src="https://frontend.tikicdn.com/_desktop-next/static/img/icons/appstore.png"
-            style="height: 50px;"
-          />
-        </a>
-        <a href="#" class="mx-4">
-          <img
-            src="https://frontend.tikicdn.com/_desktop-next/static/img/icons/playstore.png"
-            style="height: 50px;"
-          />
-        </a>
+        <div>
+          <div class="text-white mb-5 text-xl">
+            <div class="text-xl mb-4 mt-10">Liên hệ</div>
+            <div class="flex">
+              <div class="mr-4">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  aria-hidden="true"
+                  role="img"
+                  class="iconify iconify--logos"
+                  width="32"
+                  height="32"
+                  preserveAspectRatio="xMidYMid meet"
+                  viewBox="0 0 256 256"
+                ><path
+                    d="M241.871 256.001c7.802 0 14.129-6.326 14.129-14.129V14.129C256 6.325 249.673 0 241.871 0H14.129C6.324 0 0 6.325 0 14.129v227.743c0 7.803 6.324 14.129 14.129 14.129h227.742"
+                    fill="#395185"
+                  ></path><path
+                    d="M176.635 256.001v-99.137h33.277l4.982-38.635h-38.259V93.561c0-11.186 3.107-18.809 19.148-18.809l20.459-.009V40.188c-3.54-.471-15.684-1.523-29.812-1.523c-29.498 0-49.692 18.005-49.692 51.071v28.493h-33.362v38.635h33.362v99.137h39.897"
+                    fill="#FFF"
+                  ></path></svg>
+              </div>
+              <div>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  aria-hidden="true"
+                  role="img"
+                  class="iconify iconify--logos"
+                  width="31.76"
+                  height="32"
+                  preserveAspectRatio="xMidYMid meet"
+                  viewBox="0 0 256 258"
+                ><defs><filter
+                      x="-50%"
+                      y="-50%"
+                      width="200%"
+                      height="200%"
+                      filterUnits="objectBoundingBox"
+                      id="IconifyId-179bc373dcc-127aa0-40"
+                    ><feOffset
+                        dy="2"
+                        in="SourceAlpha"
+                        result="shadowOffsetOuter1"
+                      ></feOffset><feGaussianBlur
+                        stdDeviation="1"
+                        in="shadowOffsetOuter1"
+                        result="shadowBlurOuter1"
+                      ></feGaussianBlur><feColorMatrix
+                        values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.168 0"
+                        in="shadowBlurOuter1"
+                        result="shadowMatrixOuter1"
+                      ></feColorMatrix><feOffset
+                        in="SourceAlpha"
+                        result="shadowOffsetOuter2"
+                      ></feOffset><feGaussianBlur
+                        stdDeviation="1"
+                        in="shadowOffsetOuter2"
+                        result="shadowBlurOuter2"
+                      ></feGaussianBlur><feColorMatrix
+                        values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.084 0"
+                        in="shadowBlurOuter2"
+                        result="shadowMatrixOuter2"
+                      ></feColorMatrix><feMerge><feMergeNode
+                          in="shadowMatrixOuter1"
+                        ></feMergeNode><feMergeNode
+                          in="shadowMatrixOuter2"
+                        ></feMergeNode><feMergeNode
+                          in="SourceGraphic"
+                        ></feMergeNode></feMerge></filter></defs><g
+                    fill="none"
+                    transform="translate(2 2)"
+                  ><rect
+                      fill="#DC4E41"
+                      filter="url(#IconifyId-179bc373dcc-127aa0-40)"
+                      width="252"
+                      height="252"
+                      rx="7"
+                    ></rect><path
+                      d="M100.8 119.7v15.12h25.011c-1.008 6.489-7.56 19.026-25.011 19.026c-15.057 0-27.342-12.474-27.342-27.846S85.743 98.154 100.8 98.154c8.568 0 14.301 3.654 17.577 6.804l11.97-11.529C122.661 86.247 112.707 81.9 100.8 81.9c-24.381 0-44.1 19.719-44.1 44.1s19.719 44.1 44.1 44.1c25.452 0 42.336-17.892 42.336-43.092c0-2.898-.315-5.103-.693-7.308H100.8z"
+                      fill="#FFF"
+                    ></path><path
+                      d="M100.8 120.456h41.643c.441 2.079.693 4.284.693 6.93v-.441c0-2.898-.315-5.103-.693-7.308H100.8v.819zm0-37.8c11.655 0 21.483 4.221 29.043 11.151l.441-.441C122.661 86.247 112.707 81.9 100.8 81.9c-24.381 0-44.1 19.719-44.1 44.1v.378c.252-24.129 19.908-43.722 44.1-43.722zm0 71.946c17.451 0 24.003-12.474 25.011-19.026h-.189c-1.386 6.678-8.001 18.207-24.822 18.207c-14.931 0-27.09-12.285-27.279-27.405c0 .126-.063.252-.063.378c0 15.372 12.285 27.846 27.342 27.846z"
+                      opacity=".4"
+                      fill="#FFF"
+                    ></path><path
+                      d="M100.8 98.154c-15.057 0-27.342 12.474-27.342 27.846c0 .126.063.252.063.378c.189-15.183 12.348-27.405 27.279-27.405c8.568 0 14.301 3.654 17.577 6.804l11.97-11.529c-.126-.126-.315-.252-.441-.378l-11.529 11.151c-3.276-3.15-9.009-6.867-17.577-6.867zm0 36.666v.756h24.822c.063-.252.126-.567.189-.756H100.8z"
+                      opacity=".1"
+                      fill="#3E2723"
+                    ></path><path
+                      d="M100.8 170.1c-24.192 0-43.848-19.53-44.1-43.722v.378c0 24.381 19.719 44.1 44.1 44.1c25.452 0 42.336-17.892 42.336-43.092v-.378c-.189 25.011-17.01 42.714-42.336 42.714z"
+                      opacity=".1"
+                      fill="#3E2723"
+                    ></path><path
+                      d="M195.3 119.7h-12.6v-12.6h-12.6v12.6h-12.6v12.6h12.6v12.6h12.6v-12.6h12.6"
+                      fill="#FFF"
+                    ></path><path
+                      d="M182.7 119.7h12.6v.756h-12.6v-.756zm-12.6-12.6h12.6v.756h-12.6v-.756zm-12.6 12.6h12.6v.756h-12.6v-.756z"
+                      opacity=".4"
+                      fill="#FFF"
+                    ></path><path
+                      d="M157.5 132.3h12.6v.756h-12.6v-.756zm25.2 0h12.6v.756h-12.6v-.756zm-12.6 12.6h12.6v.756h-12.6v-.756z"
+                      opacity=".1"
+                      fill="#3E2723"
+                    ></path><path
+                      d="M25.2 25.2h201.6v201.6H25.2V25.2z"
+                    ></path></g></svg>
+              </div>
+            </div>
+          </div>
+          <div class="text-white text-xl">
+            <div>Chứng nhận</div>
+          </div>
+        </div>
       </div>
     </div>
 
