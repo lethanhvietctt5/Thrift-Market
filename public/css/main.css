@@ -29,3 +29,22 @@ body {
   position: relative;
   height: 16rem;
 }
+
+.message_area,
+.message {
+  height: calc(100% - 5rem);
+}
+
+.input {
+  width: calc(100% - 2.5rem);
+}
+
+/* Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}

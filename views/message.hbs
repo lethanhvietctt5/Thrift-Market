@@ -5,52 +5,73 @@
         <div>Tin nhắn</div>
       </div>
       <div>
-        <div class="px-2">
-          <div
-            class="w-full flex justify-start items-center rounded-lg cursor-pointer hover:bg-gray-200 transition delay-150 duration-300 ease-in-out p-4"
-          >
-            <div class="w-1/6 mr-2"><img
-                class="rounded-full"
-                src="/images/avatars/male.jpg"
-                alt=""
-              /></div>
-            <div>Lê Thành Việt</div>
+        {{#each list_contact}}
+          <div class="px-2" id="{{this._id}}">
+            <div
+              class="w-full flex justify-start items-center rounded-lg cursor-pointer hover:bg-gray-200 transition delay-150 duration-300 ease-in-out p-4"
+            >
+              <div class="w-1/6 mr-2"><img
+                  class="rounded-full"
+                  src="/images/avatars/male.jpg"
+                  alt=""
+                /></div>
+              <div>{{this.name}}</div>
+            </div>
           </div>
-        </div>
-
-        <div class="px-2">
-          <div
-            class="w-full flex justify-start items-center rounded-lg cursor-pointer hover:bg-gray-200 transition delay-150 duration-300 ease-in-out p-4"
-          >
-            <div class="w-1/6 mr-2"><img
-                class="rounded-full"
-                src="/images/avatars/male.jpg"
-                alt=""
-              /></div>
-            <div>Lê Thành Việt</div>
-          </div>
-        </div>
-
-        <div class="px-2">
-          <div
-            class="w-full flex justify-start items-center rounded-lg cursor-pointer hover:bg-gray-200 transition delay-150 duration-300 ease-in-out p-4"
-          >
-            <div class="w-1/6 mr-2"><img
-                class="rounded-full"
-                src="/images/avatars/male.jpg"
-                alt=""
-              /></div>
-            <div>Lê Thành Việt</div>
-          </div>
-        </div>
-        
+        {{/each}}
       </div>
     </div>
-    <div class="w-3/4">
+    <div class="w-3/4 h-full">
+      <div class="message_area">
+        <div class="flex justify-center items-center py-4 border-b-2">
+          <div class="text-lg font-semibold">{{first.name}}</div>
+        </div>
+        <div class="message w-full h-5/6">
+          <div
+            class="list_messages w-full h-full p-4 overflow-y-scroll no-scrollbar"
+          >
+            <div class="w-full flex justify-end">
+              <div class="bg-green-600 p-2 rounded-lg">Alo </div>
+            </div>
+            <div class="w-full flex justify-start">
+              <div class="bg-gray-400 p-2 rounded-lg">Alo </div>
+            </div>
 
+          </div>
+        </div>
+      </div>
+      <div class="h-20 flex justify-center p-2">
+        <div class="input h-5/6 flex justify-center items-center"><input
+            type="text"
+            placeholder="Nhập nội dung tin nhắn ..."
+            class="w-full h-5/6 border-2 rounded-full mr-4 p-2 focus:outline-none"
+          />
+        </div>
+        <div class="w-10 h-5/6 flex items-center text-green-600">
+          <div><svg
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              aria-hidden="true"
+              role="img"
+              class="iconify iconify--teenyicons"
+              width="32"
+              height="32"
+              preserveAspectRatio="xMidYMid meet"
+              viewBox="0 0 15 15"
+            ><g fill="none"><path
+                  d="M14.954.71a.5.5 0 0 1-.1.144L5.4 10.306l2.67 4.451a.5.5 0 0 0 .889-.06L14.954.71z"
+                  fill="currentColor"
+                ></path><path
+                  d="M4.694 9.6L.243 6.928a.5.5 0 0 1 .06-.889L14.293.045a.5.5 0 0 0-.146.101L4.694 9.6z"
+                  fill="currentColor"
+                ></path></g></svg></div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
+
+<div id="current_user" class="hidden">{{first._id}}</div>
 
 {{#section "js"}}
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
