@@ -223,8 +223,9 @@ const posts = [
     content: "<p>Hỗ trợ trả g&oacute;p<br />Xe bảo h&agrave;nh ch&iacute;nh h&atilde;ng 1 năm 20.000km</p><div></div><div><div><div><div>H&atilde;ng:&nbsp;Ford</div></div></div><div><div><div>D&ograve;ng xe:&nbsp;EcoSport</div></div></div><div><div><div>Năm sản xuất:&nbsp;2018</div></div></div><div><div><div>Số Km đ&atilde; đi:&nbsp;31000</div></div></div><div><div><div>T&igrave;nh trạng:&nbsp;Đ&atilde; sử dụng</div></div></div><div><div><div>Hộp số:&nbsp;Tự động</div></div></div><div><div><div>Nhi&ecirc;n liệu:&nbsp;Xăng</div></div></div><div><div><div>Xuất xứ:&nbsp;Việt Nam</div></div></div><div><div><div>Kiểu d&aacute;ng:&nbsp;SUV / Cross over</div></div></div><div><div><div>Số chỗ:&nbsp;5</div></div></div></div>",
     created: Date.now(),
     images: [],
-    price: "560.000.000",
-    categories: ["Xe cộ"]
+    price: 560000000,
+    categories: ["Xe cộ"],
+    state: true,
   },
   {
     title: "Ford Ranger 2019 Số sàn",
@@ -232,8 +233,9 @@ const posts = [
     content: "<p>Xe bảo h&agrave;nh ch&iacute;nh h&atilde;ng đến 2022<br />Hỗ trợ vay ng&acirc;n h&agrave;ng</p><div><div><div>H&atilde;ng:&nbsp;Ford</div></div><div><div>D&ograve;ng xe:&nbsp;Ranger</div></div><div><div>Năm sản xuất:&nbsp;2019</div></div><div><div>Số Km đ&atilde; đi:&nbsp;24</div></div><div><div>T&igrave;nh trạng:&nbsp;Đ&atilde; sử dụng</div></div><div><div>Hộp số:&nbsp;Số s&agrave;n</div></div><div><div>Nhi&ecirc;n liệu:&nbsp;Dầu</div></div><div><div>Xuất xứ:&nbsp;Th&aacute;i Lan</div></div><div><div>Kiểu d&aacute;ng:&nbsp;Pick-up (b&aacute;n tải)</div></div><div><div>Số chỗ:&nbsp;5</div></div></div>",
     created: Date.now(),
     images: [],
-    price: "595.000.000",
-    categories: ["Xe cộ"]
+    price: 595000000,
+    categories: ["Xe cộ"],
+    state: true,
   },
   {
     title: "Apple iPhone 11 Pro Max 64GB Quốc tế",
@@ -241,8 +243,9 @@ const posts = [
     content: "<div><div><p>B&aacute;n d&ugrave;m b&agrave; chị c&acirc;y 11 pro max 64gb xanh b&oacute;ng đ&ecirc;m quốc tế x&agrave;i được E-sim T&igrave;nh trạng m&aacute;y: - Zin &aacute;p chưa sửa chữa - Đẹp 99% v&igrave; b&agrave; chị x&agrave;i giữ kĩ, muốn l&ecirc;n 12promax n&ecirc;n b&aacute;n - M&aacute;y hiện n&uacute;t nguồn bấm hơi cứng v&igrave; x&agrave;i ốp cứng bấm nhiều ( vẫn d&ugrave;ng được chứ kh&ocirc;ng phải bị liệt nh&eacute; ) - Pin c&ograve;n 85%, sạc 465 lần bao check 3utool xanh hết - Tất cả chức năng hoạt động b&igrave;nh thường bao gồm cả Faceid cực nhạy - Bao quốc tế, kh&ocirc;ng phải m&aacute;y lock iccid. Bao reset tại chỗ thoải m&aacute;i ch&aacute;n th&igrave; th&ocirc;i - Phụ kiện fullbox kể từ khi mới mua củ sạc nhanh, c&aacute;p typeC, tai nghe lightning chưa b&oacute;c T&igrave;nh trạng m&aacute;y c&oacute; sao m&igrave;nh n&oacute;i vậy ae qua xem m&aacute;y sẽ biết. Gi&aacute; ra đi 15tr fix xăng xe, m&igrave;nh b&aacute;n kh&ocirc;ng gấp, gi&aacute; bằng m&aacute;y lock n&ecirc;n mấy b&aacute;c thợ thầy c&ograve; l&aacute;i trả gi&aacute; &eacute;p gi&aacute; n&eacute; gi&uacute;p em để tr&aacute;nh mất thời gian đ&ocirc;i b&ecirc;n 😊</p></div></div><div><div><div>H&atilde;ng:&nbsp;Apple</div></div><div><div>D&ograve;ng m&aacute;y:&nbsp;iPhone 11 Pro Max</div></div><div><div>T&igrave;nh trạng:&nbsp;Đ&atilde; sử dụng (chưa sửa chữa)</div></div><div><div>M&agrave;u sắc:&nbsp;Xanh dương</div></div><div><div>Dung lượng:&nbsp;64 GB</div></div><div><div>Giao h&agrave;ng tận nơi:&nbsp;Kh&ocirc;ng giao h&agrave;ng</div></div></div>",
     created: Date.now(),
     images: [],
-    price: "15.000.000",
-    categories: ["Đồ điện tử"]
+    price: 15000000,
+    categories: ["Đồ điện tử"],
+    state: true,
   },
   {
     title: "S10 5G nhiều màu để chọn bản 8/256 & 8/512",
@@ -250,8 +253,9 @@ const posts = [
     content: '<div><div><p>Samsung S10 5G bản H&agrave;n:</p><p>💥Nhiều m&agrave;u cho anh em chon lựa: đen, đa sắc, v&agrave;ng, gold. <br />💥Cấu h&igrave;nh mạnh bao chiến c&aacute;c loai game manh max cấu h&igrave;nh bản 8/256 va 8/512(si&ecirc;u lưu trữ) <br />💥Pin tr&acirc;u, m&agrave;n đẹp k &aacute;m bẩn. <br />💥May zin nguy&ecirc;n &aacute;p suất. <br />💥Bao test 7 ng&agrave;y, bảo h&agrave;nh 01 th&aacute;ng. C&oacute; g&oacute;i bảo h&agrave;nh 3 - 12 th&aacute;ng khi kh&aacute;ch y&ecirc;u cầu. <br />💥M&aacute;y nhập trực tiếp n&ecirc;n gi&aacute; mềm. Cam kết kh&ocirc;ng b&aacute;n h&agrave;ng face, hang k&eacute;m chất lượng <br />💥 Gi&aacute; từ 6.3tr - đến 7.3tr <br />💥💥💥 Free ship nội thanh HCM, Ship cod toan quốc.</p></div></div><div><div>Nhấn để hiện số:&nbsp;090447 ***</div></div><div><div role="presentation">Đặt giao h&agrave;ng</div></div><div><div><div>H&atilde;ng:&nbsp;Samsung</div></div><div><div>D&ograve;ng m&aacute;y:&nbsp;Galaxy S10 plus</div></div><div><div>T&igrave;nh trạng:&nbsp;Đ&atilde; sử dụng (chưa sửa chữa)</div></div><div><div>M&agrave;u sắc:&nbsp;Bạc</div></div><div><div>Dung lượng:&nbsp;&gt; 256 GB</div></div><div><div>Giao h&agrave;ng tận nơi:&nbsp;Tự giao hoặc đặt dịch vụ giao h&agrave;ng</div></div></div>',
     created: Date.now(),
     images: [],
-    price: "6.300.000",
-    categories: ["Đồ điện tử"]
+    price: 6300000,
+    categories: ["Đồ điện tử"],
+    state: true,
   },
   {
     title: "Bảy Màu Koi Red",
@@ -259,8 +263,9 @@ const posts = [
     content: "<div><div><p>Bảy M&agrave;u Koi Red Trật hồ n&ecirc;n thanh l&yacute; 50 cặp (50 con trống + 50 con m&aacute;i) C&aacute; đ&atilde; thuần nước , sống khoẻ mạnh, n&ecirc;n y&ecirc;n t&acirc;m về chỉ việc chơi Gi&aacute;: 3 triệu cho 50 cặp</p></div></div><div><div><div><div><div><div>Giao h&agrave;ng tận nơi:&nbsp;Tự giao h&agrave;ng</div></div></div><div><div><div>Giống th&uacute; cưng:&nbsp;Th&uacute; Cưng Kh&aacute;c</div></div></div></div></div></div>",
     created: Date.now(),
     images: [],
-    price: "3.000.000",
-    categories: ["Thú cưng"]
+    price: 3000000,
+    categories: ["Thú cưng"],
+    state: true,
   },
   {
     title: "Điều Hoà Đaikin inveter",
@@ -268,8 +273,9 @@ const posts = [
     content: "<div><div><p>M&ugrave;a Đ&ocirc;ng Ấm &aacute;p.💥 ĐIỀU H&Ograve;A PANASONIC ( NỘI ĐỊA NHẬT BẢN ) ---------------T&Iacute;NH NĂNG-------------</p><p>💥Sau đ&acirc;y : ch&uacute;ng ta c&ugrave;ng kh&aacute;m ph&aacute; ở điều h&ograve;a nhật c&oacute; g&igrave; kh&aacute;c biệt nh&eacute; !</p><p>🔹 c&ocirc;ng nghệ : Econavi cảm biến th&acirc;n nhiệt</p><p>🔸 c&ocirc;ng nghệ : Nanoe khử khuẩn , diệt nấm mốc</p><p>🔹 c&ocirc;ng nghệ : Auto clear: tự động vệ sinh h&uacute;t bụi d&agrave;n lạnh .</p><p>🔸 M&aacute;y hoạt động &ecirc;m &aacute;i, kh&ocirc;ng g&acirc;y ồn.</p><p>🔸 C&ocirc;ng nghệ cảm biến Mặt d&acirc;ng (tối ưu lượng gi&oacute; trao đổi v&agrave;o d&agrave;n lạnh )</p><p>🔸 C&ocirc;ng nghệ : 2 chiều ( n&oacute;ng - lạnh )</p><p>🔹C&ocirc;ng ngh&ecirc; : Inverter ( si&ecirc;u tiết kiệm điện )</p><p>🔹 Ga lạnh : R410 - R32</p><p>🔸 M&aacute;y hoạt động &ecirc;m &aacute;i, kh&ocirc;ng g&acirc;y ồn</p><p>-----------------------------------------------</p><p>💠 Shop Bảo h&agrave;nh : 15 th&aacute;ng - Hỗi trợ bảo tr&igrave; chọn đời 🚛 #GIAO_H&Agrave;NG_TO&Agrave;N_QUỐC 🤝 #NHẬN_H&Agrave;NG_THANH_TO&Aacute;N 🏠 ĐỊA CHỈ : 444 Thuỵ Khu&ecirc; t&acirc;y Hồ) ------------------------------------------------------------------</p></div></div><div><div><div>T&igrave;nh trạng:&nbsp;Đ&atilde; sử dụng</div></div><div><div>H&atilde;ng:&nbsp;Daikin</div></div><div><div>C&ocirc;ng suất:&nbsp;1 HP (ngựa)</div></div></div>",
     created: Date.now(),
     images: [],
-    price: "6.300.000",
-    categories: ["Tủ lạnh, máy giặc"]
+    price: 6300000,
+    categories: ["Tủ lạnh, máy giặc"],
+    state: true,
   },
   {
     title: "Daikin inverter 1.5hp(95%-hoàn thiện k phát sinh",
@@ -277,8 +283,9 @@ const posts = [
     content: "<div><div><p>M&aacute;y lạnh n&agrave;y vận chuyển lắp đặt trọn g&oacute;i cam kết k ph&aacute;t sinh c&oacute; bảo h&agrave;nh ace nhu cầu vui l&ograve;ng li&ecirc;n hệ</p></div></div><div><div><div><div><div><div>T&igrave;nh trạng:&nbsp;Đ&atilde; sử dụng</div></div></div><div><div><div>H&atilde;ng:&nbsp;Daikin</div></div></div><div><div><div>Giao h&agrave;ng tận nơi:&nbsp;Tự giao h&agrave;ng</div></div></div></div></div></div>",
     created: Date.now(),
     images: [],
-    price: "5.350.000",
-    categories: ["Tủ lạnh, máy giặc"]
+    price: 5350000,
+    categories: ["Tủ lạnh, máy giặc"],
+    state: true,
   },
   {
     title: "Toshiba 1hp btu9000 bao lắp bao ship máy đẹp bền",
@@ -286,8 +293,9 @@ const posts = [
     content: "<div><div><p>M&aacute;y lạnh toshiba lạnh s&acirc;u 1hp nguy&ecirc;n jin C&ocirc;ng suất m&aacute;y 9000btu</p><p>M&aacute;y lạnh điện 220v h&agrave;ng th&ugrave;ng VN</p><p>M&aacute;y chạy &ecirc;m trắng đẹp</p><p>M&aacute;y bền,đẹp bao lắp đặt Miễn ph&iacute; vận chuyển ạ</p><p>May bao vận chuyển bảo h&agrave;nh 6 th&aacute;ng 1 đổi 1</p><p>M&aacute;y chạy lạnh nhanh cho ph&ograve;ng 15m2</p></div></div><div><div><div><div><div><div>T&igrave;nh trạng:&nbsp;Đ&atilde; sử dụng</div></div></div><div><div><div>H&atilde;ng:&nbsp;Toshiba</div></div></div><div><div><div>C&ocirc;ng suất:&nbsp;1 HP (ngựa)</div></div></div><div><div><div>Giao h&agrave;ng tận nơi:&nbsp;Tự giao h&agrave;ng</div></div></div></div></div></div>",
     created: Date.now(),
     images: [],
-    price: "3.500.000",
-    categories: ["Tủ lạnh, máy giặc"]
+    price: 3500000,
+    categories: ["Tủ lạnh, máy giặc"],
+    state: true,
   },
   {
     title: "Eterna Eternity Automatic DemiRose 2700.53.11.1737",
@@ -295,8 +303,9 @@ const posts = [
     content: '<div><div><p>- T&ecirc;n thương hiệu: ETERNA</p><p>- Xuất xứ: Thuỵ Sỹ</p><p>- D&agrave;nh cho: Nam</p><p>- M&atilde; sản phẩm: 2700.53.11.1737</p><p>- Bộ m&aacute;y: Automatic</p><p>- K&iacute;ch cỡ: 40mm</p><p>- Độ d&agrave;y: 9mm</p><p>- Loại k&iacute;nh: Sapphire</p><p>- M&agrave;u mặt số: Trắng</p><p>- Chất liệu vỏ: Th&eacute;p Kh&ocirc;ng Gỉ Mạ Demi V&agrave;ng Hồng PVD</p><p>- Chức năng: Đồng Hồ 24h - Lịch Ng&agrave;y</p><p>- Chất liệu d&acirc;y: Th&eacute;p Kh&ocirc;ng Gỉ Mạ Demi V&agrave;ng Hồng PVD</p><p>- Độ chống nước: 5 ATM</p><p>- Bộ sản phẩm: Đồng Hồ - Hộp &ndash; Sổ - Phiếu Bảo H&agrave;nh Của Hưng Watch 🏅🏅🏅 CAM KẾT V&Agrave; BẢO H&Agrave;NH 🏅🏅🏅</p><p>- H&agrave;ng Full box, cam kết ch&iacute;nh h&atilde;ng 100%. - Bảo h&agrave;nh 2 năm miễn ph&iacute; cho kh&aacute;ch h&agrave;ng</p><p>-Nếu ph&aacute;t hiện h&agrave;ng Fake, ch&uacute;ng t&ocirc;i đền gấp 10 lần gi&aacute; trị sản phẩm v&agrave; chịu mọi tr&aacute;ch nhiệm.</p><p>✈️✈️✈️ VẬN CHUYỂN V&Agrave; GIAO H&Agrave;NG ✈️✈️✈️ - Giao h&agrave;ng TPHCM trong ng&agrave;y.</p><p>- Miễn ph&iacute; vận chuyển to&agrave;n quốc.</p><p>- Ship COD tận nơi nhanh ch&oacute;ng ( 2 ng&agrave;y ).</p><p>✅ Hỗ trợ trả g&oacute;p qua thẻ t&iacute;n dụng 23 ng&acirc;n h&agrave;ng</p><p>✅ Hỗ trợ thanh to&aacute;n bằng việc c&agrave; thẻ t&iacute;n dụng (Credit) , ATM.</p><p>📲📲📲 LI&Ecirc;N HỆ MUA H&Agrave;NG</p><p>📲📲📲 - Li&ecirc;n hệ hoặc nhắn tin m&igrave;nh để m&igrave;nh trực tiếp tư vấn mua h&agrave;ng nh&eacute; ( Zalo, SMS, Call ) - Chuy&ecirc;n đồng hồ x&aacute;ch tay Thụy Sỹ, Mỹ, Nhật. - Cập nhật đồng hồ tr&ecirc;n Zalo thường xuy&ecirc;n ạ. ➕➕KẾT BẠN ZALO ĐỂ THAO KHẢO TẤT CẢ NHỮNG MẪU ĐỒNG HỒ CỦA EM NH&Eacute;!!</p></div></div><div><div role="presentation">Đặt giao h&agrave;ng</div></div><div><div><div><div><div><div>T&igrave;nh trạng:&nbsp;Mới</div></div></div><div><div><div>Loại sản phẩm:&nbsp;Đồ nam</div></div></div><div><div><div>Giao h&agrave;ng tận nơi:&nbsp;Tự giao hoặc đặt dịch vụ giao h&agrave;ng</div></div></div></div></div></div>',
     created: Date.now(),
     images: [],
-    price: "14.900.000",
-    categories: ["Thời trang"]
+    price: 14900000,
+    categories: ["Thời trang"],
+    state: true,
   },
   {
     title: "Kệ bếp",
@@ -304,8 +313,9 @@ const posts = [
     content: "<p>B&ecirc;n em chuy&ecirc;n c&aacute;c loại kệ đa năng</p><p>_K&iacute;ch thước : Cao 70 , ngang 80 x 30cm</p><p>_Khung sắt + gỗ phủ melamin</p><p>_Bền v&agrave; chịu lực cao H&agrave;ng mới nguy&ecirc;n hộp(sẵn phụ kiện)</p><p>_ Đơn h&agrave;ng tỉnh th&agrave;nh ship (viettel post)</p>",
     created: Date.now(),
     images: [],
-    price: "490.000",
-    categories: ["Nội thất"]
+    price: 490000,
+    categories: ["Nội thất"],
+    state: true,
   },
 ];
  

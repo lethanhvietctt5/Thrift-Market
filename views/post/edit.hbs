@@ -58,20 +58,20 @@
         </path>
       </svg>
     </div>
-    <div>Tạo bài đăng</div>
+    <div>Sửa bài đăng</div>
   </div>  
-  <div class="title w-full text-4xl font-semibold text-center text-gray-800 mx-auto my-4">Tạo bài mới</div>
+  <div class="title w-full text-4xl font-semibold text-center text-gray-800 mx-auto my-4">Chỉnh sửa</div>
   <div class="w-8/12 mx-auto" style="height: fit-content;">
-    <form action="/post/add" method="POST" id="form" enctype='multipart/form-data' class="h-full flex flex-col">
+    <form action="/post/update/{{post._id}}" method="POST" id="form" enctype='multipart/form-data' class="h-full flex flex-col">
       <div class="relative z-0 w-full mb-5">
-        <input type="text" name="title" placeholder=" " required
+        <input type="text" name="title" placeholder=" " required value="{{post.title}}"
           class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200" />
         <label for="title" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">Nhập tiêu đề</label>
         <span class="text-sm text-red-600 hidden" id="error">Không thể để trống</span>
       </div>
 
       <div class="relative z-0 w-full mb-5">
-        <input type="number" name="money" placeholder=" "
+        <input type="number" name="money" placeholder=" " value="{{post.price}}"
           class="pt-3 pb-2 pl-5 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200" />
         <div class="absolute top-0 left-0 mt-3 ml-1 text-gray-400">đ</div>
         <label for="money" class="absolute duration-300 top-3 left-5 -z-1 origin-0 text-gray-500">Giá tiền</label>
@@ -79,7 +79,7 @@
       </div>
 
       <div class="relative z-0 w-full mb-5">
-        <input type="text" name="category" placeholder=" " required
+        <input type="text" name="category" placeholder=" " required value="{{post.categories}}"
           class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200" />
         <label for="category" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">Nhập loại hàng</label>
         <span class="text-sm text-red-600 hidden" id="error">Không thể để trống</span>
@@ -88,7 +88,7 @@
       <div class="mb-8 h-full">
         <label class="text-xl text-gray-600">Nội dung <span class="text-red-500">*</span></label></br>
         <textarea name="content" class="border-2 border-gray-500">
-
+            {{post.content}}
         </textarea>
       </div>
 
@@ -358,7 +358,7 @@
 
       <button id="submit-post" type="submit"
         class="w-full h-full px-6 py-3 mt-3 text-lg text-white transition-all duration-150 ease-linear rounded-lg shadow outline-none bg-green-500 hover:bg-green-600 hover:shadow-lg focus:outline-none">
-        Đăng
+        Cập nhật
       </button>
     </form>
   </div>

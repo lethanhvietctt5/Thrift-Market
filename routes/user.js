@@ -1,9 +1,12 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../models/User");
+const Post = require("../models/Post")
 
-router.get("/", (req, res) => {
-  return res.render("users/index");
+router.get("/", async (req, res) => {
+  const author_id = req.user._id
+  const posts = await Post.find({ author: author_id })
+  return res.render("users/index", {posts});
 });
 
 router.get("/edit_profile", (req, res) => {

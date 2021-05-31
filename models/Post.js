@@ -8,7 +8,8 @@ const post = new Schema({
   created: Date,
   images: Array,
   price: Number,
-  categories: Array
+  categories: Array,
+  state: Boolean
 });
 
 module.exports = mongoose.model("Post", post);

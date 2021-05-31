@@ -26,7 +26,7 @@ module.exports = async function () {
   for (let i = 0; i < posts.length; i++) {
     let post = await Post.findOne({ title: posts[i].title, author: posts[i].author });
     if (!post) {
-      post = new post(posts[i]);
+      post = new Post(posts[i]);
       await post.save();
     }
   }

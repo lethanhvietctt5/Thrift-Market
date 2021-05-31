@@ -76,3 +76,10 @@ handlebars.handlebars.registerHelper(
     return arg1 == arg2 ? options.fn(this) : options.inverse(this);
   }
 );
+
+handlebars.handlebars.registerHelper(
+  "formatDate",
+  function (arg) {
+    return arg.toISOString().slice(0, 10);
+  }
+);
