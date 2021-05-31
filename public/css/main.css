@@ -48,3 +48,8 @@ body {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
+
+td {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}

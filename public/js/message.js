@@ -34,14 +34,11 @@ function getMessage(id) {
       let element = document.getElementsByClassName("message")[0];
       element.innerHTML = "";
       element.innerHTML = content;
+      element = document.getElementsByClassName("list_messages")[0];
+      element.scrollTop = element.scrollHeight;
     },
   });
 }
-
-$(document).ready(function () {
-  let element = document.getElementsByClassName("list_messages")[0];
-  element.scrollTop = element.scrollHeight;
-});
 
 $(document).ready(function () {
   let slectedUser = $("#current_user").text();

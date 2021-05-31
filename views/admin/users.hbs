@@ -13,14 +13,14 @@
         {{#each users}}
           <tr>
             <td><a
-                href="/admin/users/{{this._id}}"
+                href="/admin/users/{{this.id}}"
                 class="hover:text-green-600"
               >{{this.name}}</a></td>
             <td>{{this.email}}</td>
-            <td>0</td>
+            <td>{{this.numberOfPost}}</td>
             <td id="last_col">
               {{#if this.isBanned}}
-                <a href="/admin/users/unban/{{this._id}}" class="text-red-400">
+                <a href="/admin/users/unban/{{this.id}}" class="text-red-400">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -37,7 +37,7 @@
                     ></path></svg>
                 </a>
               {{else}}
-                <a href="/admin/users/ban/{{this._id}}" class="text-green-400">
+                <a href="/admin/users/ban/{{this.id}}" class="text-green-600">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     xmlns:xlink="http://www.w3.org/1999/xlink"
