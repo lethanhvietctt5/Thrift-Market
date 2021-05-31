@@ -11,4 +11,6 @@ const post = new Schema({
   categories: Array
 });
 
+post.index({title: 'text', content: 'text'});
+
 module.exports = mongoose.model("Post", post);

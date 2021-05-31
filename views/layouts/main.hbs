@@ -253,8 +253,9 @@
     <!--Search bar and post button-->
     <div class="flex justify-center items-center bg-gray-800">
       <div class="w-full max-w-screen-xl flex justify-center items-center">
-        <div class="w-1/2 flex justify-start my-5">
-          <div
+        <form class="m-0 w-1/2" action="/post/search" method="post">
+        <div class="w-full flex justify-start my-5">
+          <button type="submit"
             class="flex justify-center items-center bg-white rounded-l-lg pl-2 text-gray-400"
           >
             <svg
@@ -273,15 +274,16 @@
                 fill="currentColor"
               ></path>
             </svg>
-          </div>
+          </button>
           <div class="w-3/4">
-            <input
-              type="text"
-              class="w-full h-10 rounded-r-lg p-2 focus:outline-none"
-              placeholder="Tìm kiếm trên Thrift Market ..."
-            />
+              <input
+                type="text" name="keyword" id="search-bar"
+                class="w-full h-10 rounded-r-lg p-2 focus:outline-none"
+                placeholder="Tìm kiếm trên Thrift Market ..."
+              />
           </div>
-        </div>
+          
+        </div></form>
         <a
           href="/post/create"
           class="flex justify-center items-center bg-white py-2 px-5 rounded-lg text-green-600 hover:underline cursor-pointer"

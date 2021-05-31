@@ -76,3 +76,6 @@ handlebars.handlebars.registerHelper(
     return arg1 == arg2 ? options.fn(this) : options.inverse(this);
   }
 );
+handlebars.handlebars.registerHelper('formatCurrency', function(value) {
+  return value.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+});
