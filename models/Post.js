@@ -12,4 +12,6 @@ const post = new Schema({
   state: Boolean
 });
 
+post.index({title: 'text', content: 'text'});
+
 module.exports = mongoose.model("Post", post);

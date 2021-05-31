@@ -83,3 +83,6 @@ handlebars.handlebars.registerHelper(
     return arg.toISOString().slice(0, 10);
   }
 );
+handlebars.handlebars.registerHelper('formatCurrency', function(value) {
+  return value.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+});

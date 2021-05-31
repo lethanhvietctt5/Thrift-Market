@@ -1,0 +1,85 @@
+<div class="w-3/4 py-16" style="margin-left: 12.5%;">
+    <div class="flex flex-row">
+        <div class="mb-4">
+            <select id="sort-posts" class="option-item">
+                <option >Sắp xếp</option>
+                <option value="newest">Mới nhất</option>
+                <option value="priceDes">Giá giảm dần</option>
+                <option value="priceInc">Giá tăng dần</option>
+            </select>
+        </div>
+        
+        <div class="mb-4 mx-8">
+            <select id="category-filter" class="option-item">
+                <option>Danh mục</option>
+                {{#each categories}}
+                <option value="{{this.name}}">{{this.name}}</option>
+                {{/each}}
+            </select>
+        </div>
+    </div>
+
+    <div class="grid gap-8" id="posts"></div>
+
+</div>
+
+{{#section 'js'}}
+<script>
+    posts = [];
+    {{#each result}}
+        posts.push({
+            price: {{this.price}},
+            categories: `{{this.categories}}`,
+            created: new Date(`{{this.created}}`),
+            html: `
+            <a href="/post/info/{{this._id}}" class="transform hover:scale-105 transition duration-300 ease-in-out flex flex-row" style="box-shadow: 0 10px 24px rgb(0, 0, 0, 0.15); position: relative;">
+                <img class="m-4 h-40" src="https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
+                <div class="relative w-full">
+                <h5 class="mt-4 mb-4 font-bold text-xl">{{this.title}}</h5>
+                <p class="font-bold pb-4 text-base" style="color: rgb(253, 133, 44);">{{formatCurrency this.price}} đ</p>
+                <button class="absolute right-8 top-16">
+                    <i class="far fa-heart text-6xl"></i>
+                </button>
+                </div>
+            </a>`
+        });
+    {{/each}}
+    for (i = 0; i < posts.length; i++) {
+        $('#posts').html($('#posts').html() + posts[i].html);
+    }
+    if (posts.length == 0) {
+        $('#posts').html(`<p class="text-xl">Không tìm thấy bất kì kết quả nào cho <strong>'{{keyword}}'</strong></p>`)
+    }
+
+    $('#sort-posts').on('change', function() {
+        $('#posts').html('');
+        switch (this.value) {
+            case 'newest':
+            console.log(posts);
+                posts.sort(function (a, b) { return b.created - a.created; })
+                break;
+            case 'priceInc':
+                posts.sort(function (a, b) { return a.price - b.price; })
+                break;
+            case 'priceDes':
+                posts.sort(function (a, b) { return b.price - a.price; })
+                break;
+            default:
+        }
+        for (i = 0; i < posts.length; i++) {
+            $('#posts').html($('#posts').html() + posts[i].html);
+        }
+    });
+
+    $('#category-filter').on('change', function() {
+        $('#posts').html('');
+        for (i = 0; i < posts.length; i++) {
+            if (posts[i].categories.includes(this.value)) {
+                $('#posts').html($('#posts').html() + posts[i].html);
+            }
+        }
+    });
+
+    $('#search-bar').val(`{{keyword}}`);
+</script>
+{{/section}}
