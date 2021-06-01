@@ -8,19 +8,19 @@
 <div class="w-8/12 mx-auto h-auto border border-gray-200 flex">
   <div class="w-8/12 h-auto mt-12">
     <div class="carousel w-full">
-      <section class="mx-auto max-w-2xl h-full">
-        <div class="shadow-2xl relative h-full">
+      <section class="mx-auto max-w-2xl" style="height: fit-content;">
+        <div class="shadow-2xl relative h-96">
           <!-- large image on slides -->
           {{#each post.images}}
           <div class="mySlides hidden h-full">
-            <div class="image{{@index}} mx-auto w-1/2 h-1/2 object-cover"></div>
+            <div class="flex flex-col justify-center h-full"><div class="image{{@index}} mx-auto object-cover max-h-72  "></div></div>
           </div>
           {{/each}}
         
           <!-- butttons -->
-          <a class="absolute left-0 inset-y-0 flex items-center -mt-32 px-4 text-green-400 hover:text-gray-800 cursor-pointer text-3xl font-extrabold"
+          <a class="absolute left-0 inset-y-0 flex items-center px-4 text-green-400 hover:text-gray-800 cursor-pointer text-3xl font-extrabold"
             onclick="plusSlides(-1)">❮</a>
-          <a class="absolute right-0 inset-y-0 flex items-center -mt-32 px-4 text-green-400 hover:text-gray-800 cursor-pointer text-3xl font-extrabold"
+          <a class="absolute right-0 inset-y-0 flex items-center px-4 text-green-400 hover:text-gray-800 cursor-pointer text-3xl font-extrabold"
             onclick="plusSlides(1)">❯</a>
         
           <!-- smaller images under description -->
@@ -34,7 +34,7 @@
         </div>
       </section>
     </div>
-    <div class="details w-full h-auto mt-12">
+    <div class="details w-full h-auto mt-32">
       <div class="title flex">
         <div class="ml-4">
           <div class="name text-xl font-semibold">{{post.title}}</div>
@@ -42,7 +42,7 @@
         </div>
         <div></div>
       </div>
-      <div class="description flex mt-12 mx-4 mb-32">
+      <div class="description flex flex-col mt-12 mx-4 mb-32">
         {{{post.content}}}
       </div>
     </div>
@@ -59,7 +59,7 @@
     </div>
     <div class="rate h-16 m-4 flex">
       <div class="w-full h-4/5 m-1 my-auto">
-        <div class="text-center">Cửa hàng</div>
+        <div class="text-center">Người bán</div>
         <div class="flex justify-center mt-1 text-xl"><i class="fas fa-store-alt text-green-600"></i></div>
       </div>
     </div>
