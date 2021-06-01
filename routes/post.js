@@ -18,9 +18,11 @@ router.get("/info/:id", async function(req, res) {
     res.render("post/info", { post, author_name: author.name });
 });
 
-router.get("/create", (req, res) => {
-    if (req.session.user)
-        res.render("post/create");
+router.get("/create", async (req, res) => {
+    if (req.session.user){
+        const categories = await Category.find();
+        res.render("post/create", {categories});
+    }   
     else res.redirect('/')
 });
 
@@ -116,7 +118,6 @@ router.post("/update/:id", async (req, res) => {
             post.title = req.body.title
             post.content = req.body.content
             post.price = req.body.money
-            post.categories = typeof(post.categories)==typeof([]) ? req.body.category : [req.body.category]
             await post.save();
             res.redirect(req.session.referer != null ? req.session.referer : '/');
         }
