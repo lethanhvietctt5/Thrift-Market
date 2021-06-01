@@ -15,3 +15,4 @@ const post = new Schema({
 post.index({title: 'text', content: 'text'});
 
 module.exports = mongoose.model("Post", post);
+    
