@@ -32,16 +32,18 @@
             categories: `{{this.categories}}`,
             created: new Date(`{{this.created}}`),
             html: `
-            <a href="/post/info/{{this._id}}" class="transform hover:scale-105 transition duration-300 ease-in-out flex flex-row" style="box-shadow: 0 10px 24px rgb(0, 0, 0, 0.15); position: relative;">
-                <img class="m-4 h-40" src="https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
-                <div class="relative w-full">
-                <h5 class="mt-4 mb-4 font-bold text-xl">{{this.title}}</h5>
-                <p class="font-bold pb-4 text-base" style="color: rgb(253, 133, 44);">{{formatCurrency this.price}} đ</p>
-                <button class="absolute right-8 top-16">
-                    <i class="far fa-heart text-6xl"></i>
+            <div class="relative transform hover:scale-105 transition duration-300 ease-in-out">
+                <a href="/post/info/{{this._id}}" class="flex flex-row" style="box-shadow: 0 10px 24px rgb(0, 0, 0, 0.15);">
+                    <img class="m-4 h-40" src="https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
+                    <div class=" w-full">
+                    <h5 class="mt-4 mb-4 font-bold text-xl">{{this.title}}</h5>
+                    <p class="font-bold pb-4 text-base" style="color: rgb(253, 133, 44);">{{formatCurrency this.price}} đ</p>
+                    </div>
+                </a>
+                <button class="add_fav absolute right-8 top-16" value="{{this._id}}">
+                        <i class="far fa-heart text-6xl"></i>
                 </button>
-                </div>
-            </a>`
+            </div>`
         });
     {{/each}}
     $('#posts').html(`<p class="text-xl"><strong>${posts.length} kết quả</strong> cho <strong>'{{keyword}}'</strong></p>`)
@@ -84,5 +86,28 @@
     });
 
     $('#search-bar').val(`{{keyword}}`);
+
+    $('.add_fav').on('click', function(){
+        $.get({
+            url: `/user/addFav/${this.value}`,
+            success: function (data) {
+                if (data == true) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Lưu bài đăng thành công',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Bài đăng đã được lưu trước đó hoặc bạn chưa đăng nhập',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
+            }
+        });
+    })
 </script>
 {{/section}}

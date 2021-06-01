@@ -6,11 +6,26 @@ const Post = require("../models/Post")
 router.get("/", async (req, res) => {
   const author_id = req.user._id
   const posts = await Post.find({ author: author_id })
-  return res.render("users/index", {posts});
+  var favPosts = [];
+  for (i = 0; i < req.user.favPosts.length; i++) {
+    favPosts.push(await Post.findById(req.user.favPosts[i]));
+  }
+  return res.render("users/index", {posts, favPosts});
 });
 
 router.get("/edit_profile", (req, res) => {
   return res.render("users/edit_profile");
+});
+
+router.get("/addFav/:id", async (req, res) => {
+  const user = await User.findById(req.user._id);
+  if (user.favPosts.includes(req.params.id)) {
+    res.send(false);
+  } else {
+    user.favPosts.push(req.params.id);
+    user.save();
+    res.send(true);
+  }
 });
 
 router.post("/edit_profile", async (req, res) => {
