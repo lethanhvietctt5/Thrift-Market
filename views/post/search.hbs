@@ -44,6 +44,7 @@
             </a>`
         });
     {{/each}}
+    $('#posts').html(`<p class="text-xl"><strong>${posts.length} kết quả</strong> cho <strong>'{{keyword}}'</strong></p>`)
     for (i = 0; i < posts.length; i++) {
         $('#posts').html($('#posts').html() + posts[i].html);
     }
@@ -52,22 +53,24 @@
     }
 
     $('#sort-posts').on('change', function() {
-        $('#posts').html('');
-        switch (this.value) {
-            case 'newest':
-            console.log(posts);
-                posts.sort(function (a, b) { return b.created - a.created; })
-                break;
-            case 'priceInc':
-                posts.sort(function (a, b) { return a.price - b.price; })
-                break;
-            case 'priceDes':
-                posts.sort(function (a, b) { return b.price - a.price; })
-                break;
-            default:
-        }
-        for (i = 0; i < posts.length; i++) {
-            $('#posts').html($('#posts').html() + posts[i].html);
+        if (posts.length > 0) {
+            $('#posts').html(`<p class="text-xl"><strong>${posts.length} kết quả</strong> cho <strong>'{{keyword}}'</strong></p>`)
+            switch (this.value) {
+                case 'newest':
+                console.log(posts);
+                    posts.sort(function (a, b) { return b.created - a.created; })
+                    break;
+                case 'priceInc':
+                    posts.sort(function (a, b) { return a.price - b.price; })
+                    break;
+                case 'priceDes':
+                    posts.sort(function (a, b) { return b.price - a.price; })
+                    break;
+                default:
+            }
+            for (i = 0; i < posts.length; i++) {
+                $('#posts').html($('#posts').html() + posts[i].html);
+            }
         }
     });
 
