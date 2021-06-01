@@ -25,7 +25,7 @@ router.get("/create", (req, res) => {
 });
 
 router.post('/search', async function(req, res) {
-    const result = await Post.find( {$text: { $search: req.body.keyword }} );
+    const result = await Post.find( {title: {$regex: new RegExp(req.body.keyword), $options: 'i' }, state : true} );
     const categories = await Category.find();
     res.render('post/search', { result : result, categories : categories, keyword : req.body.keyword } );
 });
