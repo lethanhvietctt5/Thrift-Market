@@ -48,8 +48,13 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+    <link
+      href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css"
+      rel="stylesheet"
+    />
+    <script
+      src="//cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"
+    ></script>
     <title>Thrift Market</title>
   </head>
 
@@ -72,7 +77,9 @@
               >
                 <div class="cursor-pointer hover:underline"><a href="/">Trang
                     chủ</a></div>
-                <div class="cursor-pointer hover:underline"><a href="/admin/posts">Quản lý bài đăng</a></div>
+                <div class="cursor-pointer hover:underline"><a
+                    href="/admin/posts"
+                  >Quản lý bài đăng</a></div>
                 <div class="cursor-pointer hover:underline"><a
                     href="/admin/users"
                   >Quản lý người dùng</a></div>
@@ -83,7 +90,9 @@
               >
                 <div class="cursor-pointer hover:underline"><a href="/">Trang
                     chủ</a></div>
-                <div class="cursor-pointer hover:underline"><a href="/{{session.user._id}}">Quản lý bài đăng</a></div>
+                <div class="cursor-pointer hover:underline"><a
+                    href="/{{session.user._id}}"
+                  >Quản lý bài đăng</a></div>
                 <div class="cursor-pointer hover:underline"><a
                     href="/message"
                   >Tin nhắn</a></div>
@@ -255,64 +264,70 @@
     <div class="flex justify-center items-center bg-gray-800">
       <div class="w-full max-w-screen-xl flex justify-center items-center">
         <form class="m-0 w-1/2" action="/post/search" method="post">
-        <div class="w-full flex justify-start my-5">
-          <button type="submit"
-            class="flex justify-center items-center bg-white rounded-l-lg pl-2 text-gray-400"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              xmlns:xlink="http://www.w3.org/1999/xlink"
-              aria-hidden="true"
-              role="img"
-              class="iconify iconify--carbon"
-              width="32"
-              height="32"
-              preserveAspectRatio="xMidYMid meet"
-              viewBox="0 0 32 32"
+          <div class="w-full flex justify-start my-5">
+            <button
+              type="submit"
+              class="flex justify-center items-center bg-white rounded-l-lg pl-2 text-gray-400"
             >
-              <path
-                d="M29 27.586l-7.552-7.552a11.018 11.018 0 1 0-1.414 1.414L27.586 29zM4 13a9 9 0 1 1 9 9a9.01 9.01 0 0 1-9-9z"
-                fill="currentColor"
-              ></path>
-            </svg>
-          </button>
-          <div class="w-3/4">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                aria-hidden="true"
+                role="img"
+                class="iconify iconify--carbon"
+                width="32"
+                height="32"
+                preserveAspectRatio="xMidYMid meet"
+                viewBox="0 0 32 32"
+              >
+                <path
+                  d="M29 27.586l-7.552-7.552a11.018 11.018 0 1 0-1.414 1.414L27.586 29zM4 13a9 9 0 1 1 9 9a9.01 9.01 0 0 1-9-9z"
+                  fill="currentColor"
+                ></path>
+              </svg>
+            </button>
+            <div class="w-3/4">
               <input
-                type="text" name="keyword" id="search-bar" required
+                type="text"
+                name="keyword"
+                id="search-bar"
+                required
                 class="w-full h-10 rounded-r-lg p-2 focus:outline-none"
                 placeholder="Tìm kiếm trên Thrift Market ..."
               />
+            </div>
           </div>
-          
-        </div></form>
-        <a
-          href="/post/create"
-          class="flex justify-center items-center bg-white py-2 px-5 rounded-lg text-green-600 hover:underline cursor-pointer"
-        >
-          <div>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              xmlns:xlink="http://www.w3.org/1999/xlink"
-              aria-hidden="true"
-              role="img"
-              class="iconify iconify--ic"
-              width="24"
-              height="24"
-              preserveAspectRatio="xMidYMid meet"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M17 19.22H5V7h7V5H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-7h-2v7.22z"
-                fill="currentColor"
-              ></path>
-              <path
-                d="M19 2h-2v3h-3c.01.01 0 2 0 2h3v2.99c.01.01 2 0 2 0V7h3V5h-3V2zM7 9h8v2H7zm0 3v2h8v-2h-3zm0 3h8v2H7z"
-                fill="currentColor"
-              ></path>
-            </svg>
-          </div>
-          <div>Đăng bài</div>
-        </a>
+        </form>
+        {{#if session.user.isAdmin}}{{else}}
+          <a
+            href="/post/create"
+            class="flex justify-center items-center bg-white py-2 px-5 rounded-lg text-green-600 hover:underline cursor-pointer"
+          >
+            <div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                aria-hidden="true"
+                role="img"
+                class="iconify iconify--ic"
+                width="24"
+                height="24"
+                preserveAspectRatio="xMidYMid meet"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M17 19.22H5V7h7V5H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-7h-2v7.22z"
+                  fill="currentColor"
+                ></path>
+                <path
+                  d="M19 2h-2v3h-3c.01.01 0 2 0 2h3v2.99c.01.01 2 0 2 0V7h3V5h-3V2zM7 9h8v2H7zm0 3v2h8v-2h-3zm0 3h8v2H7z"
+                  fill="currentColor"
+                ></path>
+              </svg>
+            </div>
+            <div>Đăng bài</div>
+          </a>
+        {{/if}}
       </div>
     </div>
     {{{body}}}

@@ -5,26 +5,28 @@
   {{/each}}
 </style>
 
-<div class="w-8/12 mx-auto h-auto border border-gray-200 flex">
-  <div class="w-8/12 h-auto mt-12">
+<div class="w-8/12 mx-auto h-auto border bg-white border-gray-200 flex">
+  <div class="w-8/12 h-auto border-r-2">
     <div class="carousel w-full">
-      <section class="mx-auto max-w-2xl" style="height: fit-content;">
+      <section class="mx-auto" style="height: fit-content;">
         <div class="shadow-2xl relative h-96">
           <!-- large image on slides -->
           {{#each post.images}}
           <div class="mySlides hidden h-full">
-            <div class="flex flex-col justify-center h-full"><div class="image{{@index}} mx-auto object-cover max-w-md max-h-72  "></div></div>
+            <div class="flex flex-col justify-center h-full">
+              <div class="image{{@index}} mx-auto object-cover h-full"></div>
+            </div>
           </div>
           {{/each}}
         
           <!-- butttons -->
-          <a class="absolute left-0 inset-y-0 flex items-center px-4 text-green-400 hover:text-gray-800 cursor-pointer text-3xl font-extrabold"
+          <a class="absolute left-0 inset-y-0 flex items-center px-4 text-green-600 hover:text-gray-800 cursor-pointer text-3xl font-extrabold"
             onclick="plusSlides(-1)">❮</a>
-          <a class="absolute right-0 inset-y-0 flex items-center px-4 text-green-400 hover:text-gray-800 cursor-pointer text-3xl font-extrabold"
+          <a class="absolute right-0 inset-y-0 flex items-center px-4 text-green-600 hover:text-gray-800 cursor-pointer text-3xl font-extrabold"
             onclick="plusSlides(1)">❯</a>
         
           <!-- smaller images under description -->
-          <div class="flex justify-center h-auto w-full bg-green-800">
+          <div class="flex justify-center h-auto w-full bg-gray-400">
             {{#each post.images}}
             <div class="h-auto">
               <img class="image{{@index}} description h-24 opacity-50 hover:opacity-100 cursor-pointer bg-black" src="#" onclick="currentSlide({{@index}} + 1)"/>
@@ -34,38 +36,53 @@
         </div>
       </section>
     </div>
-    <div class="details w-full h-auto mt-32">
-      <div class="title flex">
-        <div class="ml-4">
-          <div class="name text-xl font-semibold">{{post.title}}</div>
-          <div class="price text-red-600 font-semibold">{{formatCurrency post.price}} đ</div>
+    <div class="details w-full h-auto mt-32 px-8">
+      <div class="w-full">
+        <div class="title flex justify-between items-center w-full">
+          <div class="">
+            <div class="name text-2xl font-semibold">{{post.title}}</div>
+            <div class="price text-xl mt-2 text-red-600 font-semibold">{{formatCurrency post.price}} đ</div>
+            <div class="italic text-sm mt-2 text-gray-600">Ngày đăng: {{formatDate post.created}}</div>
+          </div>
+          <div>
+            <button class="border-2 px-4 py-2 rounded-lg text-red-500 border-red-500">
+              <a href="" class="flex justify-center items-center text-red-500">
+                <div>Lưu tin</div>
+                <div class="text-red-500 ml-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--la" width="32" height="32" preserveAspectRatio="xMidYMid meet" viewBox="0 0 32 32"><path d="M9.5 5C5.363 5 2 8.402 2 12.5c0 1.43.648 2.668 1.25 3.563a9.25 9.25 0 0 0 1.219 1.468L15.28 28.375l.719.719l.719-.719L27.53 17.531S30 15.355 30 12.5C30 8.402 26.637 5 22.5 5c-3.434 0-5.645 2.066-6.5 2.938C15.145 7.066 12.934 5 9.5 5zm0 2c2.988 0 5.75 2.906 5.75 2.906l.75.844l.75-.844S19.512 7 22.5 7c3.043 0 5.5 2.496 5.5 5.5c0 1.543-1.875 3.625-1.875 3.625L16 26.25L5.875 16.125s-.484-.465-.969-1.188C4.422 14.216 4 13.274 4 12.5C4 9.496 6.457 7 9.5 7z" fill="currentColor"></path></svg>
+                </div>
+              </a>
+            </button>
+          </div>
         </div>
-        <div></div>
       </div>
-      <div class="description flex flex-col mt-12 mx-4 mb-32">
-        {{{post.content}}}
+      <div class="description flex flex-col mt-2 mb-32">
+        <div class="italic underline mt-2 text-gray-600">Thông tin:</div>
+        <div class="text-sm text-gray-800 ml-10">{{{post.content}}}</div>
       </div>
     </div>
   </div>
-  <div class="w-4/12 mt-12 ">
-    <div class="info-shop h-16 m-4 flex">
-      <div class="w-1/6 avatar rounded-full m-1 my-auto bg-gray-400"></div>
-      <div class="w-1/2 h-4/5 m-1 my-auto">{{author_name}}</div>
-      <div class="w-1/3 h-4/5 m-1 my-auto flex">
-        <button class=" hover:bg-green-800 text-white bg-green-600 font-semibold text-xs py-2 px-4 rounded m-auto">Thông
-          tin người
-          bán</button>
+  <div class="w-4/12 mt-8 mx-10">
+    <div class="flex items-center">
+      <div class="text-gray-600">
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--ph" width="70" height="70" preserveAspectRatio="xMidYMid meet" viewBox="0 0 256 256"><path d="M230 128a102 102 0 1 0-170.773 75.26a5.962 5.962 0 0 0 1.177 1.054a101.789 101.789 0 0 0 135.196-.003a5.95 5.95 0 0 0 1.168-1.046A101.753 101.753 0 0 0 230 128zm-192 0a90 90 0 1 1 155.514 61.64a77.582 77.582 0 0 0-40.003-31.385a46 46 0 1 0-51.022 0a77.58 77.58 0 0 0-40.003 31.385A89.671 89.671 0 0 1 38 128zm56-8a34 34 0 1 1 34 34a34.039 34.039 0 0 1-34-34zm-22.557 77.953a66.028 66.028 0 0 1 113.113 0a89.803 89.803 0 0 1-113.113 0z" fill="currentColor"></path></svg>
+      </div>
+      <div class="ml-3">
+        <div class="text-xl hover:text-green-600">{{author_name}}</div>
+        <div class="text-sm italic text-green-600"><a href="">Xem trang cá nhân</a></div>
       </div>
     </div>
-    <div class="rate h-16 m-4 flex">
-      <div class="w-full h-4/5 m-1 my-auto">
-        <div class="text-center">Người bán</div>
-        <div class="flex justify-center mt-1 text-xl"><i class="fas fa-store-alt text-green-600"></i></div>
-      </div>
+    <div class="w-full mt-6">
+      <button class="w-full bg-green-600 rounded-lg">
+        <a href="" class="flex justify-center items-center w-full py-3 text-white">
+          <div class="mr-4 text-lg">Nhắn tin với người bán</div>
+          <div>
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--mdi" width="32" height="32" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M9 11h9v2H9v-2m9-4H6v2h12V7m4-3v18l-4-4H4a2 2 0 0 1-2-2V4c0-1.1.9-2 2-2h16a2 2 0 0 1 2 2m-2 0H4v12h14.83L20 17.17V4z" fill="currentColor"></path></svg>
+          </div>
+        </a>
+      </button>
     </div>
-    <div
-      class="mess h-12 m-4 border rounded font-semibold border-green-600 text-green-600 flex justify-center items-center">
-      Chat với người bán<span class="ml-3 text-xl"><i class="far fa-comment-dots"></i></span></div>
+    <div></div>
   </div>
 </div>
 
