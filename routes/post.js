@@ -6,6 +6,7 @@ const User = require("../models/User");
 const Category = require("../models/Category");
 const fs = require("fs");
 const mkdirp = require("mkdirp");
+const { title } = require("process");
 
 router.get("/", async function (req, res) {
   res.redirect("/");
@@ -37,10 +38,13 @@ router.get("/create", async (req, res) => {
 });
 
 router.post("/search", async function (req, res) {
-  const result = await Post.find({
-    title: { $regex: new RegExp(req.body.keyword), $options: "i" },
-    state: true,
+  let result = await Post.find({
+    $text: {
+      $search: req.body.keyword,
+    },
   });
+
+  result = result.filter((post) => post.state && !post.hide);
   const categories = await Category.find();
   res.render("post/search", {
     result: result,

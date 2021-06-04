@@ -13,4 +13,6 @@ var post = new Schema({
   hide: Boolean,
 });
 
+post.index({ title: "text" });
+
 module.exports = mongoose.model("Post", post);

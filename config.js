@@ -7,6 +7,7 @@ const passport = require("passport");
 const mongoose = require("mongoose");
 const MongoStore = require("connect-mongo");
 const flash = require("req-flash");
+const Post = require("./models/Post");
 
 module.exports = function config(app) {
   // Connect to database
@@ -77,12 +78,9 @@ handlebars.handlebars.registerHelper(
   }
 );
 
-handlebars.handlebars.registerHelper(
-  "formatDate",
-  function (arg) {
-    return arg.toISOString().slice(0, 10);
-  }
-);
-handlebars.handlebars.registerHelper('formatCurrency', function(value) {
+handlebars.handlebars.registerHelper("formatDate", function (arg) {
+  return arg.toISOString().slice(0, 10);
+});
+handlebars.handlebars.registerHelper("formatCurrency", function (value) {
   return value.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
 });
