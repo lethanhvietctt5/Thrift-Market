@@ -65,6 +65,20 @@ router.get("/posts/delete/:id", (req, res) => {
   });
 });
 
+router.get("/posts/hide/:id", async (req, res) => {
+  let post = await Post.findOne({ _id: req.params.id });
+  post.hide = true;
+  await post.save();
+  return res.redirect("/admin/posts");
+});
+
+router.get("/posts/unhide/:id", async (req, res) => {
+  let post = await Post.findOne({ _id: req.params.id });
+  post.hide = false;
+  await post.save();
+  return res.redirect("/admin/posts");
+});
+
 router.get("/posts", async (req, res) => {
   const posts = await Post.find();
   let list_posts = await Promise.all(
@@ -79,6 +93,7 @@ router.get("/posts", async (req, res) => {
         created: post.created,
         category: post.categories[0],
         state: post.state,
+        hide: post.hide,
       };
     })
   );

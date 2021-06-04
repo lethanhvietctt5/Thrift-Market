@@ -9,8 +9,8 @@ var post = new Schema({
   images: Array,
   price: Number,
   categories: Array,
-  state: Boolean
+  state: Boolean,
+  hide: Boolean,
 });
 
 module.exports = mongoose.model("Post", post);
-    

@@ -39,14 +39,14 @@
     <div class="details w-full h-auto mt-32 px-8">
       <div class="w-full">
         <div class="title flex justify-between items-center w-full">
-          <div class="">
+          <div class="w-8/12">
             <div class="name text-2xl font-semibold">{{post.title}}</div>
             <div class="price text-xl mt-2 text-red-600 font-semibold">{{formatCurrency post.price}} đ</div>
             <div class="italic text-sm mt-2 text-gray-600">Ngày đăng: {{formatDate post.created}}</div>
           </div>
-          <div>
+          <div class="">
             <button class="border-2 px-4 py-2 rounded-lg text-red-500 border-red-500">
-              <a href="" class="flex justify-center items-center text-red-500">
+              <a href="" class="flex justify-center items-center text-red-500 text-sm">
                 <div>Lưu tin</div>
                 <div class="text-red-500 ml-2">
                   <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--la" width="32" height="32" preserveAspectRatio="xMidYMid meet" viewBox="0 0 32 32"><path d="M9.5 5C5.363 5 2 8.402 2 12.5c0 1.43.648 2.668 1.25 3.563a9.25 9.25 0 0 0 1.219 1.468L15.28 28.375l.719.719l.719-.719L27.53 17.531S30 15.355 30 12.5C30 8.402 26.637 5 22.5 5c-3.434 0-5.645 2.066-6.5 2.938C15.145 7.066 12.934 5 9.5 5zm0 2c2.988 0 5.75 2.906 5.75 2.906l.75.844l.75-.844S19.512 7 22.5 7c3.043 0 5.5 2.496 5.5 5.5c0 1.543-1.875 3.625-1.875 3.625L16 26.25L5.875 16.125s-.484-.465-.969-1.188C4.422 14.216 4 13.274 4 12.5C4 9.496 6.457 7 9.5 7z" fill="currentColor"></path></svg>
@@ -73,16 +73,42 @@
       </div>
     </div>
     <div class="w-full mt-6">
+      {{#if session.user.isAdmin}}
+      {{else}}
       <button class="w-full bg-green-600 rounded-lg">
-        <a href="/message/{{post.author}}" class="flex justify-center items-center w-full py-3 text-white">
-          <div class="mr-4 text-lg">Nhắn tin với người bán</div>
-          <div>
-            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--mdi" width="32" height="32" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M9 11h9v2H9v-2m9-4H6v2h12V7m4-3v18l-4-4H4a2 2 0 0 1-2-2V4c0-1.1.9-2 2-2h16a2 2 0 0 1 2 2m-2 0H4v12h14.83L20 17.17V4z" fill="currentColor"></path></svg>
+        {{#if session.user}}
+          <a href="/message/{{post.author}}" class="flex justify-center items-center w-full py-3 text-white">
+            <div class="mr-4 text-lg">Nhắn tin với người bán</div>
+            <div>
+              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--mdi" width="32" height="32" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M9 11h9v2H9v-2m9-4H6v2h12V7m4-3v18l-4-4H4a2 2 0 0 1-2-2V4c0-1.1.9-2 2-2h16a2 2 0 0 1 2 2m-2 0H4v12h14.83L20 17.17V4z" fill="currentColor"></path></svg>
+            </div>
+          </a>
+        {{else}}
+          <a href="/login" class="flex justify-center items-center w-full py-3 text-white">
+            <div class="mr-4 text-lg">Nhắn tin với người bán</div>
+            <div>
+              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--mdi" width="32" height="32" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M9 11h9v2H9v-2m9-4H6v2h12V7m4-3v18l-4-4H4a2 2 0 0 1-2-2V4c0-1.1.9-2 2-2h16a2 2 0 0 1 2 2m-2 0H4v12h14.83L20 17.17V4z" fill="currentColor"></path></svg>
+            </div>
+          </a>
+        {{/if}}
+      </button>
+      {{/if}}
+      
+    </div>
+    <div class="w-full mt-10">
+      <div class="font-bold text-lg">Bài đăng cùng loại</div>
+      {{#each same}}
+        <a class="w-full h-20 hover:text-green-600" href="/post/info/{{this.id}}">
+          <div class="w-full h-20 flex justify-center items-center my-2">
+            <div class="w-1/4 h-20"><img class="w-full h-full" src="{{this.img}}" alt=""></div>
+            <div class="w-3/4 h-full pl-2">
+              <div class="text-sm">{{this.title}}</div>
+              <div class="text-sm text-red-500 mt-2">{{this.price}}</div>
+            </div>
           </div>
         </a>
-      </button>
+      {{/each}}
     </div>
-    <div></div>
   </div>
 </div>
 

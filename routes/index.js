@@ -11,12 +11,16 @@ router.get("/", async (req, res) => {
   const categories = await Category.find();
   let newPosts = await Post.find();
   newPosts = newPosts.sort((a, b) => a.created - b.created);
-  newPosts = newPosts.map((post) => ({
-    id: post._id,
-    title: post.title.trunc(30),
-    price: post.price.toLocaleString(),
-    img: post.images[0]?.path,
-  }));
+  newPosts = newPosts
+    .map((post) => ({
+      id: post._id,
+      title: post.title.trunc(30),
+      price: post.price.toLocaleString(),
+      img: post.images[0]?.path,
+      state: post.state,
+      hide: post.hide,
+    }))
+    .filter((post) => post.state && !post.hide);
   res.render("index", { categories, newPosts });
 });
 
