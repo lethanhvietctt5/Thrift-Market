@@ -17,6 +17,7 @@ const adminRoute = require("./routes/admin");
 const userRoute = require("./routes/user");
 const postRoute = require("./routes/post");
 const messageRoute = require("./routes/message");
+const indexRoute = require("./routes/index");
 
 // Import middlewares
 const mdwCheckLogin = require("./middlewares/checkLogin");
@@ -37,11 +38,6 @@ const PORT = process.env.PORT || 3000;
 
 app.use(mdwCheckLogin);
 
-app.get("/", mdwCheckLogin, async (req, res) => {
-  const categories = await Category.find();
-  res.render("index", { categories });
-});
-
 app.use("/message", mdwLogged, messageRoute);
 
 app.use("/admin", mdwCheckAdmin, adminRoute);
@@ -58,6 +54,8 @@ app.get("/logout", (req, res) => {
   req.session.destroy();
   res.redirect("/login");
 });
+
+app.use("/", indexRoute);
 
 app.use("/:user_id", mdwLogged, userRoute);
 

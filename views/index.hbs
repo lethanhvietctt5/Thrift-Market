@@ -57,42 +57,21 @@
             {{/each}}
         </div>
     </div>
-    <div class="w-3/4 my-16" style="margin-left: 12.5%;">
-        <p class="text-2xl font-bold my-4">BÀI ĐĂNG MỚI</p>
-        <div class="grid grid-cols-3 gap-8">
-            <div class="transform hover:scale-105 transition duration-300 ease-in-out" style="box-shadow: 0 10px 24px rgb(0, 0, 0, 0.15); position: relative;">
-                <img src="https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
-                <h5 class="mt-4 mx-4 font-bold text-xl">Máy ảnh Fujifilm XT-10</h5>
-                <p class="font-bold mx-4 pb-4 text-base" style="color: rgb(253, 133, 44);">2,000,000 đ</p>
-                <a href="#" class="bg-transparent p-2 rounded-full font-bold transition duration-300 ease-in-out border absolute
-                hover:border-0 hover:bg-purple-400 hover:text-white" style="bottom: 1rem; right: 1rem;">Xem chi tiết</a>
-                <a href="#" class=" text-center hover:text-white transition duration-500 ease-in-out hover:bg-red-300" style="position: absolute; top: 1rem; right: 1rem; line-height: 45px;
-                box-shadow: 0 5px 10px rgba(0,0,0,0.25); border-radius: 50%; width: 45px; height: 45px;">
-                    <i class="far fa-bookmark text-xl"></i>
+    <div class="mx-auto w-9/12">
+        <div class="mb-4 font-semibold text-xl">Bài đăng mới</div>
+        <div class="grid grid-cols-7 gap-2">
+            {{#each newPosts}}
+                <a class="hover:text-green-600" href="/post/info/{{this.id}}">
+                    <div class="w-full h-72 p-2 mb-20 border-2 hover:shadow-2xl transition delay-100 duration-300 ease-in-out">
+                        <div class="h-4/6 w-full"><img class="img w-full h-full object-fit" src="{{this.img}}" alt=""></div>
+                        <div class="h-2/6 flex flex-col justify-between">
+                            <div class="text-sm mt-4">{{this.title}}</div>
+                            <div class="mb-2 text-red-500">{{this.price}}</div>
+                        </div>
+                    </div>
                 </a>
-            </div>
-            <div class="transform hover:scale-105 transition duration-300 ease-in-out" style="box-shadow: 0 10px 24px rgb(0, 0, 0, 0.15); position: relative;">
-                <img src="https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
-                <h5 class="mt-4 mx-4 font-bold text-xl">Máy ảnh Fujifilm XT-10</h5>
-                <p class="font-bold mx-4 pb-4 text-base" style="color: rgb(253, 133, 44);">2,000,000 đ</p>
-                <a href="#" class="bg-transparent p-2 rounded-full font-bold transition duration-300 ease-in-out border absolute
-                hover:border-0 hover:bg-purple-400 hover:text-white" style="bottom: 1rem; right: 1rem;">Xem chi tiết</a>
-                <a href="#" class=" text-center hover:text-white transition duration-500 ease-in-out hover:bg-red-300" style="position: absolute; top: 1rem; right: 1rem; line-height: 45px;
-                box-shadow: 0 5px 10px rgba(0,0,0,0.25); border-radius: 50%; width: 45px; height: 45px;">
-                    <i class="far fa-bookmark text-xl"></i>
-                </a>
-            </div>
-            <div class="transform hover:scale-105 transition duration-300 ease-in-out" style="box-shadow: 0 10px 24px rgb(0, 0, 0, 0.15); position: relative;">
-                <img src="https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
-                <h5 class="mt-4 mx-4 font-bold text-xl">Máy ảnh Fujifilm XT-10</h5>
-                <p class="font-bold mx-4 pb-4 text-base" style="color: rgb(253, 133, 44);">2,000,000 đ</p>
-                <a href="#" class="bg-transparent p-2 rounded-full font-bold transition duration-300 ease-in-out border absolute
-                hover:border-0 hover:bg-purple-400 hover:text-white" style="bottom: 1rem; right: 1rem;">Xem chi tiết</a>
-                <a href="#" class=" text-center hover:text-white transition duration-500 ease-in-out hover:bg-red-300" style="position: absolute; top: 1rem; right: 1rem; line-height: 45px;
-                box-shadow: 0 5px 10px rgba(0,0,0,0.25); border-radius: 50%; width: 45px; height: 45px;">
-                    <i class="far fa-bookmark text-xl"></i>
-                </a>
-            </div>
+                
+            {{/each}}
         </div>
     </div>
     {{#section "js"}}
