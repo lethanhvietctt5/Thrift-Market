@@ -13,7 +13,7 @@ function addLoading() {
 function getMessage(id) {
   addLoading();
   $.get({
-    url: `/message/${id}`,
+    url: `/message/getMessages/${id}`,
     success: function (data) {
       let content = "";
       for (let i = 0; i < data.result.length; i++) {
