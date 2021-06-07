@@ -26,7 +26,6 @@ router.get("/info/:id", async function (req, res) {
       price: post.price,
       img: post.images[0].path,
     }));
-
   res.render("post/info", { post, author_name: author.name, same });
 });
 
