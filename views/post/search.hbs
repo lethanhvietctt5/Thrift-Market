@@ -1,5 +1,5 @@
 <div class="w-3/4 py-4" style="margin-left: 12.5%;">
-    <div class="my-4 flex flex-row text-xl font-bold items-center text-pink-700">
+    <div class="my-4 flex flex-row text-xl font-bold items-center text-gray-500">
         <a href="/">Trang chủ</a>
         <i class="fas fa-chevron-right mx-4"></i>
         <p>Tìm kiếm</p>
@@ -9,7 +9,7 @@
     
     <div class="flex flex-row">
         <div class="mb-4">
-            <select id="sort-posts" class="option-item border rounded text-pink-700 border-pink-700">
+            <select id="sort-posts" class="focus:outline-none px-2 py-1 option-item border rounded text-gray-800 border-gray-700">
                 <option >Sắp xếp</option>
                 <option value="newest">Mới nhất</option>
                 <option value="priceDes">Giá giảm dần</option>
@@ -18,7 +18,7 @@
         </div>
         
         <div class="mb-4 mx-8">
-            <select id="category-filter" class="option-item border rounded text-pink-700 border-pink-700">
+            <select id="category-filter" class="focus:outline-none px-2 py-1 option-item border rounded text-gray-800 border-gray-700">
                 <option>Danh mục</option>
                 {{#each categories}}
                 <option value="{{this.name}}">{{this.name}}</option>
@@ -27,7 +27,7 @@
         </div>
 
         <div class="mb-4">
-            <select id="price-filter" class="option-item border rounded text-pink-700 border-pink-700">
+            <select id="price-filter" class="focus:outline-none px-2 py-1 option-item border rounded text-gray-800 border-gray-700">
                 <option >Khoảng giá</option>
                 <option value="500000">0 - 500,000 đ</option>
                 <option value="1000000">500,000 - 1,000,000 đ</option>
@@ -61,15 +61,15 @@
             created: created,
             html: `
             <div class="relative transform hover:scale-105 transition duration-300 ease-in-out">
-                <a href="/post/info/{{this._id}}" class="flex flex-row" style="box-shadow: 0 10px 24px rgb(0, 0, 0, 0.15);">
-                    <img class="m-4 h-40" src="{{this.images.[0].path}}">
+                <a href="/post/info/{{this._id}}" class="flex flex-row p-3" style="box-shadow: 0 10px 24px rgb(0, 0, 0, 0.15);">
+                    <div class="h-44 w-44 mr-4"><img class="h-full w-full object-fit" src="{{this.images.[0].path}}"></div>
                     <div class=" w-full flex flex-col">
                     <h5 class="mt-4 mb-4 font-bold text-xl">{{this.title}}</h5>
                     <p class="font-bold pb-4 text-base mb-auto" style="color: rgb(253, 133, 44);">{{formatCurrency this.price}} đ</p>
                     <p class="text-sm text-gray-400 mb-4">${passed}</p>
                     </div>
                 </a>
-                <button class="add_fav absolute right-8 top-16" value="{{this._id}}">
+                <button class="add_fav absolute right-8 top-16 text-red-500" value="{{this._id}}">
                         <i class="far fa-heart text-6xl"></i>
                 </button>
             </div>`

@@ -19,7 +19,13 @@ router.get("/info/:id", async function (req, res) {
   const cat = post.categories[0];
   let same = await Post.find();
   same = same
-    .filter((post) => post.categories[0] == cat && post.state && !post.hide)
+    .filter(
+      (post) =>
+        post.categories[0] == cat &&
+        post.state &&
+        !post.hide &&
+        post._id != req.params.id
+    )
     .map((post) => ({
       id: post._id,
       title: post.title,
@@ -38,12 +44,12 @@ router.get("/create", async (req, res) => {
 
 router.get("/byCategory/:name", async (req, res) => {
   const result = await Post.find({
-    categories: req.params.name
+    categories: req.params.name,
   });
   res.render("post/category", {
     result: result,
-    category: req.params.name
-  })
+    category: req.params.name,
+  });
 });
 
 router.post("/search", async function (req, res) {
@@ -52,9 +58,9 @@ router.post("/search", async function (req, res) {
       $search: req.body.keyword,
     },
     state: true,
-    hide: false
+    hide: false,
   });
-  
+
   const categories = await Category.find();
   res.render("post/search", {
     result: result,
