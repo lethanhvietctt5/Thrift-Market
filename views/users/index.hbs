@@ -60,26 +60,63 @@
     <div class="w-4/5 lg:w-3/5 ml-5 sm:ml-0 justify-between items-center">
       <div class="w-full text-xl font-bold">Danh sách bài đăng</div>
       <div class="overflow-x-auto mt-6">
-  
-        <table class="table-auto border-collapse w-full border-2 rounded-xl border-gray-200">
+
+        <table
+          class="table-auto border-collapse w-full border-2 rounded-xl border-gray-200"
+        >
           <thead>
-            <tr class="rounded-lg text-sm font-medium text-gray-700 text-left" style="font-size: 0.9674rem">
-              <th class="px-4 py-2 bg-gray-200 " style="background-color:#f8f8f8">Tiêu đề</th>
-              <th class="px-4 py-2 text-center" style="background-color:#f8f8f8">Ngày đăng</th>
-              <th class="px-4 py-2 text-center" style="background-color:#f8f8f8">Trạng thái</th>
+            <tr
+              class="rounded-lg text-sm font-medium text-gray-700 text-left"
+              style="font-size: 0.9674rem"
+            >
+              <th
+                class="px-4 py-2 bg-gray-200"
+                style="background-color:#f8f8f8"
+              >Tiêu đề</th>
+              <th
+                class="px-4 py-2 text-center"
+                style="background-color:#f8f8f8"
+              >Ngày đăng</th>
+              <th
+                class="px-4 py-2 text-center"
+                style="background-color:#f8f8f8"
+              >Trạng thái</th>
+              <th>Xóa bài</th>
             </tr>
           </thead>
           <tbody class="text-sm font-normal text-gray-700">
             {{#each posts}}
-            <tr class="hover:bg-gray-100 border-b border-gray-200 py-10">
-              <td class="px-4 py-4"><a href="/post/edit/{{this._id}}">{{this.title}}</a></td>
-              <td class="px-4 py-4 text-center">{{#formatDate this.created}}{{/formatDate}}</td>
-              {{#if this.state}}
-              <td class="px-4 py-4 text-center text-green-600">Đã duyệt</td>
-              {{else}}
-              <td class="px-4 py-4 text-center text-red-600">Chờ duyệt</td>
-              {{/if}}
-            </tr>
+              <tr class="hover:bg-gray-100 border-b border-gray-200 py-10">
+                <td class="px-4 py-4"><a
+                    href="/post/edit/{{this._id}}"
+                  >{{this.title}}</a></td>
+                <td class="px-4 py-4 text-center">{{#formatDate
+                    this.created
+                  }}{{/formatDate}}</td>
+                {{#if this.state}}
+                  <td class="px-4 py-4 text-center text-green-600">Đã duyệt</td>
+                {{else}}
+                  <td class="px-4 py-4 text-center text-red-600">Chờ duyệt</td>
+                {{/if}}
+                <td class="px-4 py-4 text-center">
+                  <a href="/{{this.author}}/deletePost/{{this._id}}">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      xmlns:xlink="http://www.w3.org/1999/xlink"
+                      aria-hidden="true"
+                      role="img"
+                      class="iconify iconify--mdi"
+                      width="32"
+                      height="32"
+                      preserveAspectRatio="xMidYMid meet"
+                      viewBox="0 0 24 24"
+                    ><path
+                        d="M19 4h-3.5l-1-1h-5l-1 1H5v2h14M6 19a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7H6v12z"
+                        fill="currentColor"
+                      ></path></svg>
+                  </a>
+                </td>
+              </tr>
             {{/each}}
           </tbody>
         </table>
@@ -89,29 +126,67 @@
 </div>
 
 <div class="w-full flex justify-center my-10">
-    <div class="w-4/5 lg:w-3/5 ml-5 sm:ml-0 justify-between items-center">
-      <div class="w-full text-xl font-bold">Bài đăng đã lưu</div>
-      <div class="overflow-x-auto mt-6">
-  
-        <table class="table-auto border-collapse w-full border-2 rounded-xl border-gray-200">
-          <thead>
-            <tr class="rounded-lg text-sm font-medium text-gray-700 text-left" style="font-size: 0.9674rem">
-              <th class="px-4 py-2 bg-gray-200 " style="background-color:#f8f8f8">Tiêu đề</th>
-              <th class="px-4 py-2 text-center" style="background-color:#f8f8f8">Giá</th>
-              <th class="px-4 py-2 text-center" style="background-color:#f8f8f8">Ngày đăng</th>
-            </tr>
-          </thead>
-          <tbody class="text-sm font-normal text-gray-700">
-            {{#each favPosts}}
+  <div class="w-4/5 lg:w-3/5 ml-5 sm:ml-0 justify-between items-center">
+    <div class="w-full text-xl font-bold">Bài đăng đã lưu</div>
+    <div class="overflow-x-auto mt-6">
+
+      <table
+        class="table-auto border-collapse w-full border-2 rounded-xl border-gray-200"
+      >
+        <thead>
+          <tr
+            class="rounded-lg text-sm font-medium text-gray-700 text-left"
+            style="font-size: 0.9674rem"
+          >
+            <th
+              class="px-4 py-2 bg-gray-200"
+              style="background-color:#f8f8f8"
+            >Tiêu đề</th>
+            <th
+              class="px-4 py-2 text-center"
+              style="background-color:#f8f8f8"
+            >Giá</th>
+            <th
+              class="px-4 py-2 text-center"
+              style="background-color:#f8f8f8"
+            >Ngày đăng</th>
+            <th>Xóa khỏi danh sách</th>
+          </tr>
+        </thead>
+        <tbody class="text-sm font-normal text-gray-700">
+          {{#each favPosts}}
             <tr class="hover:bg-gray-100 border-b border-gray-200 py-10">
-              <td class="px-4 py-4"><a href="/post/info/{{this._id}}">{{this.title}}</a></td>
-              <td class="px-4 py-4 text-center text-green-600">{{formatCurrency this.price}}</td>
-              <td class="px-4 py-4 text-center">{{#formatDate this.created}}{{/formatDate}}</td>
+              <td class="px-4 py-4"><a
+                  href="/post/info/{{this._id}}"
+                >{{this.title}}</a></td>
+              <td class="px-4 py-4 text-center text-green-600">{{formatCurrency
+                  this.price
+                }}</td>
+              <td class="px-4 py-4 text-center">{{#formatDate
+                  this.created
+                }}{{/formatDate}}</td>
+              <td class="pl-10 py-4 text-center">
+                <a href="/{{this.id_user}}/removeFav/{{this._id}}">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                    aria-hidden="true"
+                    role="img"
+                    class="iconify iconify--mdi"
+                    width="32"
+                    height="32"
+                    preserveAspectRatio="xMidYMid meet"
+                    viewBox="0 0 24 24"
+                  ><path
+                      d="M19 4h-3.5l-1-1h-5l-1 1H5v2h14M6 19a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7H6v12z"
+                      fill="currentColor"
+                    ></path></svg>
+                </a>
+              </td>
             </tr>
-            {{/each}}
-          </tbody>
-        </table>
-      </div>
+          {{/each}}
+        </tbody>
+      </table>
     </div>
   </div>
 </div>

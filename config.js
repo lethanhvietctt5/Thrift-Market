@@ -79,8 +79,10 @@ handlebars.handlebars.registerHelper(
 );
 
 handlebars.handlebars.registerHelper("formatDate", function (arg) {
+  if (!arg) return arg;
   return arg.toISOString().slice(0, 10);
 });
 handlebars.handlebars.registerHelper("formatCurrency", function (value) {
+  if (!value) return value;
   return value.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
 });

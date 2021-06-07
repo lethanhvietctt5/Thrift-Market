@@ -45,6 +45,7 @@ router.get("/users/:id", async (req, res) => {
     price: post.price.toLocaleString(),
     created: post.created,
     state: post.state,
+    hide: post.hide,
   }));
   return res.render("admin/user", { user, list });
 });
@@ -53,6 +54,8 @@ router.get("/posts/approve/:id", async (req, res) => {
   let post = await Post.findOne({ _id: req.params.id });
   post.state = true;
   await post.save();
+  if (req.headers.referer.includes("users"))
+    return res.redirect(req.headers.referer);
   return res.redirect("/admin/posts");
 });
 
@@ -61,6 +64,8 @@ router.get("/posts/delete/:id", (req, res) => {
     if (err) {
       return res.status(500).send(err);
     }
+    if (req.headers.referer.includes("users"))
+      return res.redirect(req.headers.referer);
     return res.redirect("/admin/posts");
   });
 });
@@ -69,6 +74,8 @@ router.get("/posts/hide/:id", async (req, res) => {
   let post = await Post.findOne({ _id: req.params.id });
   post.hide = true;
   await post.save();
+  if (req.headers.referer.includes("users"))
+    return res.redirect(req.headers.referer);
   return res.redirect("/admin/posts");
 });
 
@@ -76,6 +83,8 @@ router.get("/posts/unhide/:id", async (req, res) => {
   let post = await Post.findOne({ _id: req.params.id });
   post.hide = false;
   await post.save();
+  if (req.headers.referer.includes("users"))
+    return res.redirect(req.headers.referer);
   return res.redirect("/admin/posts");
 });
 
