@@ -44,7 +44,13 @@
           <div class="w-8/12">
             <div class="name text-2xl font-semibold">{{post.title}}</div>
             <div class="price text-xl mt-2 text-red-600 font-semibold">{{formatCurrency post.price}} đ</div>
-            <div class="italic text-sm mt-2 text-gray-600">Ngày đăng: {{formatDate post.created}}</div>
+            <div class="flex flex-row mt-2">
+              <p class="mr-2 text-base">Danh mục: </p>
+              {{#each post.categories}}
+                <a href="/post/byCategory/{{this}}" class="italic">{{this}}</a>
+              {{/each}}
+            </div>
+            <div class="text-sm mt-2 text-gray-600">Ngày đăng: {{formatDate post.created}}</div>
           </div>
           <div class="">
             <button value="post._id" class="add_fav border px-2 py-1 rounded-lg text-red-500 

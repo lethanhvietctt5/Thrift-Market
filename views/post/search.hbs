@@ -1,7 +1,15 @@
-<div class="w-3/4 py-16" style="margin-left: 12.5%;">
+<div class="w-3/4 py-4" style="margin-left: 12.5%;">
+    <div class="my-4 flex flex-row text-xl font-bold items-center text-pink-700">
+        <a href="/">Trang chủ</a>
+        <i class="fas fa-chevron-right mx-4"></i>
+        <p>Tìm kiếm</p>
+        <i class="fas fa-chevron-right mx-4"></i>
+        <p>Kết quả cho "{{keyword}}"</p>
+    </div>
+    
     <div class="flex flex-row">
         <div class="mb-4">
-            <select id="sort-posts" class="option-item">
+            <select id="sort-posts" class="option-item border rounded text-pink-700 border-pink-700">
                 <option >Sắp xếp</option>
                 <option value="newest">Mới nhất</option>
                 <option value="priceDes">Giá giảm dần</option>
@@ -10,16 +18,27 @@
         </div>
         
         <div class="mb-4 mx-8">
-            <select id="category-filter" class="option-item">
+            <select id="category-filter" class="option-item border rounded text-pink-700 border-pink-700">
                 <option>Danh mục</option>
                 {{#each categories}}
                 <option value="{{this.name}}">{{this.name}}</option>
                 {{/each}}
             </select>
         </div>
+
+        <div class="mb-4">
+            <select id="price-filter" class="option-item border rounded text-pink-700 border-pink-700">
+                <option >Khoảng giá</option>
+                <option value="500000">0 - 500,000 đ</option>
+                <option value="1000000">500,000 - 1,000,000 đ</option>
+                <option value="5000000">1,000,000 - 5,000,000 đ</option>
+                <option value="20000000">5,000,000 - 20,000,000 đ</option>
+                <option value="20000001">Trên 20,000,000 đ</option>
+            </select>
+        </div>
     </div>
 
-    <div class="grid gap-8" id="posts"></div>
+    <div class="grid gap-8 px-6" id="posts"></div>
 
 </div>
 
@@ -27,17 +46,27 @@
 <script>
     posts = [];
     {{#each result}}
+        now = new Date();
+        created = new Date(`{{this.created}}`);
+        diffTime = Math.abs(now-created);
+        if( diffTime > 1000*60*60*24*365) passed = `${diffTime/(1000*60*60*24*365)} năm trước`;
+        else if( diffTime > 1000*60*60*24*30) passed = `${Math.round(diffTime/(1000*60*60*24*30))} tháng trước`;
+        else if( diffTime > 1000*60*60*24) passed = `${Math.round(diffTime/(1000*60*60*24))} ngày trước`;
+        else if( diffTime > 1000*60*60) passed = `${Math.round(diffTime/(1000*60*60))} giờ trước`;
+        else if( diffTime > 1000*60) passed = `${Math.round(diffTime/(1000*60))} phút trước`;
+        else if( diffTime > 0) passed = `Vừa xong`;
         posts.push({
             price: {{this.price}},
             categories: `{{this.categories}}`,
-            created: new Date(`{{this.created}}`),
+            created: created,
             html: `
             <div class="relative transform hover:scale-105 transition duration-300 ease-in-out">
                 <a href="/post/info/{{this._id}}" class="flex flex-row" style="box-shadow: 0 10px 24px rgb(0, 0, 0, 0.15);">
                     <img class="m-4 h-40" src="{{this.images.[0].path}}">
-                    <div class=" w-full">
+                    <div class=" w-full flex flex-col">
                     <h5 class="mt-4 mb-4 font-bold text-xl">{{this.title}}</h5>
-                    <p class="font-bold pb-4 text-base" style="color: rgb(253, 133, 44);">{{formatCurrency this.price}} đ</p>
+                    <p class="font-bold pb-4 text-base mb-auto" style="color: rgb(253, 133, 44);">{{formatCurrency this.price}} đ</p>
+                    <p class="text-sm text-gray-400 mb-4">${passed}</p>
                     </div>
                 </a>
                 <button class="add_fav absolute right-8 top-16" value="{{this._id}}">
@@ -46,7 +75,7 @@
             </div>`
         });
     {{/each}}
-    $('#posts').html(`<p class="text-xl"><strong>${posts.length} kết quả</strong> cho <strong>'{{keyword}}'</strong></p>`)
+    
     for (i = 0; i < posts.length; i++) {
         $('#posts').html($('#posts').html() + posts[i].html);
     }
@@ -56,7 +85,7 @@
 
     $('#sort-posts').on('change', function() {
         if (posts.length > 0) {
-            $('#posts').html(`<p class="text-xl"><strong>${posts.length} kết quả</strong> cho <strong>'{{keyword}}'</strong></p>`)
+            
             switch (this.value) {
                 case 'newest':
                 console.log(posts);
@@ -72,6 +101,23 @@
             }
             for (i = 0; i < posts.length; i++) {
                 $('#posts').html($('#posts').html() + posts[i].html);
+            }
+        }
+    });
+
+    $('#price-filter').on('change', function() {
+        $('#posts').html('');
+        if (this.value < 20000001) {
+            for (i = 0; i < posts.length; i++) {
+                if (posts[i].price < this.value) {
+                    $('#posts').html($('#posts').html() + posts[i].html);
+                }
+            }
+        } else {
+            for (i = 0; i < posts.length; i++) {
+                if (posts[i].price > 20000000) {
+                    $('#posts').html($('#posts').html() + posts[i].html);
+                }
             }
         }
     });

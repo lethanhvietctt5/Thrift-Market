@@ -1,16 +1,35 @@
 <div class="w-3/4 py-16" style="margin-left: 12.5%;">
+    <div class="my-4 flex flex-row text-xl font-bold items-center text-pink-700">
+        <a href="/">Trang chủ</a>
+        <i class="fas fa-chevron-right mx-4"></i>
+        <p>Danh mục</p>
+        <i class="fas fa-chevron-right mx-4"></i>
+        <p>{{category}}</p>
+    </div>
+
     <div class="flex flex-row">
         <div class="mb-4">
-            <select id="sort-posts" class="option-item">
+            <select id="sort-posts" class="option-item border rounded text-pink-700 border-pink-700">
                 <option >Sắp xếp</option>
                 <option value="newest">Mới nhất</option>
                 <option value="priceDes">Giá giảm dần</option>
                 <option value="priceInc">Giá tăng dần</option>
             </select>
         </div>
+
+        <div class="mb-4 mx-8">
+            <select id="price-filter" class="option-item border rounded text-pink-700 border-pink-700">
+                <option >Khoảng giá</option>
+                <option value="500000">0 - 500,000 đ</option>
+                <option value="1000000">500,000 - 1,000,000 đ</option>
+                <option value="5000000">1,000,000 - 5,000,000 đ</option>
+                <option value="20000000">5,000,000 - 20,000,000 đ</option>
+                <option value="20000001">Trên 20,000,000 đ</option>
+            </select>
+        </div>
     </div>
 
-    <div class="grid gap-8" id="posts"></div>
+    <div class="px-6 grid gap-8" id="posts"></div>
 
 </div>
 
@@ -37,7 +56,6 @@
             </div>`
         });
     {{/each}}
-    $('#posts').html(`<p class="text-xl">Có <strong>${posts.length} sản phẩm</strong> trong danh mục <strong>'{{category}}'</strong></p>`)
     for (i = 0; i < posts.length; i++) {
         $('#posts').html($('#posts').html() + posts[i].html);
     }
@@ -47,7 +65,6 @@
 
     $('#sort-posts').on('change', function() {
         if (posts.length > 0) {
-            $('#posts').html(`<p class="text-xl"><strong>${posts.length} kết quả</strong> cho <strong>'{{keyword}}'</strong></p>`)
             switch (this.value) {
                 case 'newest':
                 console.log(posts);
@@ -63,6 +80,23 @@
             }
             for (i = 0; i < posts.length; i++) {
                 $('#posts').html($('#posts').html() + posts[i].html);
+            }
+        }
+    });
+
+    $('#price-filter').on('change', function() {
+        $('#posts').html('');
+        if (this.value < 20000001) {
+            for (i = 0; i < posts.length; i++) {
+                if (posts[i].price < this.value) {
+                    $('#posts').html($('#posts').html() + posts[i].html);
+                }
+            }
+        } else {
+            for (i = 0; i < posts.length; i++) {
+                if (posts[i].price > 20000000) {
+                    $('#posts').html($('#posts').html() + posts[i].html);
+                }
             }
         }
     });
