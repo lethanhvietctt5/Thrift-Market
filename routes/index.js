@@ -14,8 +14,8 @@ router.get("/", async (req, res) => {
   newPosts = newPosts
     .map((post) => ({
       id: post._id,
-      title: post.title.trunc(30),
-      price: post.price.toLocaleString(),
+      title: post.title.trunc(25),
+      price: post.price,
       img: post.images[0]?.path,
       state: post.state,
       hide: post.hide,

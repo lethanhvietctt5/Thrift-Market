@@ -18,14 +18,20 @@ router.get("/edit_profile", (req, res) => {
 });
 
 router.get("/addFav/:id", async (req, res) => {
-  const user = await User.findById(req.user._id);
-  if (user.favPosts.includes(req.params.id)) {
-    res.send(false);
-  } else {
-    user.favPosts.push(req.params.id);
-    user.save();
-    res.send(true);
-  }
+    const user = await User.findById(req.user._id);
+    if (user.favPosts.includes(req.params.id)) {
+      res.json({
+        status: false,
+        message: 'Đã lưu bài viết từ trước!'
+      });
+    } else {
+      user.favPosts.push(req.params.id);
+      user.save();
+      res.json({
+        status: true,
+        message: 'Lưu bài viết thành công!'
+      });
+    }
 });
 
 router.post("/edit_profile", async (req, res) => {

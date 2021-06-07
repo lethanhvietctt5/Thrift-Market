@@ -37,14 +37,25 @@ router.get("/create", async (req, res) => {
   } else res.redirect("/");
 });
 
+router.get("/byCategory/:name", async (req, res) => {
+  const result = await Post.find({
+    categories: req.params.name
+  });
+  res.render("post/category", {
+    result: result,
+    category: req.params.name
+  })
+});
+
 router.post("/search", async function (req, res) {
   let result = await Post.find({
     $text: {
       $search: req.body.keyword,
     },
+    state: true,
+    hide: false
   });
-
-  result = result.filter((post) => post.state && !post.hide);
+  
   const categories = await Category.find();
   res.render("post/search", {
     result: result,

@@ -8,15 +8,6 @@
                 <option value="priceInc">Giá tăng dần</option>
             </select>
         </div>
-        
-        <div class="mb-4 mx-8">
-            <select id="category-filter" class="option-item">
-                <option>Danh mục</option>
-                {{#each categories}}
-                <option value="{{this.name}}">{{this.name}}</option>
-                {{/each}}
-            </select>
-        </div>
     </div>
 
     <div class="grid gap-8" id="posts"></div>
@@ -46,12 +37,12 @@
             </div>`
         });
     {{/each}}
-    $('#posts').html(`<p class="text-xl"><strong>${posts.length} kết quả</strong> cho <strong>'{{keyword}}'</strong></p>`)
+    $('#posts').html(`<p class="text-xl">Có <strong>${posts.length} sản phẩm</strong> trong danh mục <strong>'{{category}}'</strong></p>`)
     for (i = 0; i < posts.length; i++) {
         $('#posts').html($('#posts').html() + posts[i].html);
     }
     if (posts.length == 0) {
-        $('#posts').html(`<p class="text-xl">Không tìm thấy bất kì kết quả nào cho <strong>'{{keyword}}'</strong></p>`)
+        $('#posts').html(`<p class="text-xl">Danh mục <strong>'{{category}}'</strong> chưa có sản phẩm nào</p>`)
     }
 
     $('#sort-posts').on('change', function() {
@@ -75,17 +66,6 @@
             }
         }
     });
-
-    $('#category-filter').on('change', function() {
-        $('#posts').html('');
-        for (i = 0; i < posts.length; i++) {
-            if (posts[i].categories.includes(this.value)) {
-                $('#posts').html($('#posts').html() + posts[i].html);
-            }
-        }
-    });
-
-    $('#search-bar').val(`{{keyword}}`);
 
     $('.add_fav').on('click', function(){
         $.get({

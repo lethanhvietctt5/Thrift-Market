@@ -47,12 +47,14 @@
         <div class="categories grid grid-cols-4 md:grid-cols-8 gap-8">
             {{#each categories}}
                 <div class="hover:text-green-800 transform hover:scale-110 transition duration-300 ease-in-out">
-                    <div>
-                        <img src="{{this.img}}" alt="" class="cursor-pointer">
-                    </div>
-                    <div class="flex justify-center items-center">
-                        <a class="text-sm text-white font-medium mt-4" href="#">{{this.name}}</a>
-                    </div>
+                    <a href="/post/byCategory/{{this.name}}">
+                        <div>
+                            <img src="{{this.img}}" alt="" class="cursor-pointer">
+                        </div>
+                        <div class="flex justify-center items-center">
+                            <p class="text-sm text-white font-medium mt-4">{{this.name}}</p>
+                        </div>
+                    </a>
                 </div>
             {{/each}}
         </div>
@@ -65,8 +67,8 @@
                     <div class="w-full h-72 p-2 mb-20 border-2 hover:shadow-2xl transition delay-100 duration-300 ease-in-out">
                         <div class="h-4/6 w-full"><img class="img w-full h-full object-fit" src="{{this.img}}" alt=""></div>
                         <div class="h-2/6 flex flex-col justify-between">
-                            <div class="text-sm mt-4">{{this.title}}</div>
-                            <div class="mb-2 text-red-500">{{this.price}}</div>
+                            <div class="text-sm font-bold mt-4">{{this.title}}</div>
+                            <div class="mb-2 text-red-500 font-bold text-base">{{formatCurrency this.price}} đ</div>
                         </div>
                     </div>
                 </a>
