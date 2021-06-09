@@ -71,19 +71,34 @@
             <div
               class="text-4xl mr-10 xl:mr-20 font-extrabold text-green-600"
             ><a href="/">Thrift Market</a></div>
-            {{#if session.user.isAdmin}}
-              <div
-                class="w-1/2 xl:w-3/5 flex justify-between text-base hidden md:flex"
-              >
-                <div class="cursor-pointer hover:underline"><a href="/">Trang
-                    chủ</a></div>
-                <div class="cursor-pointer hover:underline"><a
-                    href="/admin/posts"
-                  >Quản lý bài đăng</a></div>
-                <div class="cursor-pointer hover:underline"><a
-                    href="/admin/users"
-                  >Quản lý người dùng</a></div>
-              </div>
+            {{#if session.user}}
+              {{#if session.user.isAdmin}}
+                <div
+                  class="w-1/2 xl:w-3/5 flex justify-between text-base hidden md:flex"
+                >
+                  <div class="cursor-pointer hover:underline"><a href="/">Trang
+                      chủ</a></div>
+                  <div class="cursor-pointer hover:underline"><a
+                      href="/admin/posts"
+                    >Quản lý bài đăng</a></div>
+                  <div class="cursor-pointer hover:underline"><a
+                      href="/admin/users"
+                    >Quản lý người dùng</a></div>
+                </div>
+              {{else}}
+                <div
+                  class="w-1/2 xl:w-2/5 flex justify-between text-base hidden md:flex"
+                >
+                  <div class="cursor-pointer hover:underline"><a href="/">Trang
+                      chủ</a></div>
+                  <div class="cursor-pointer hover:underline"><a
+                      href="/{{session.user._id}}"
+                    >Quản lý bài đăng</a></div>
+                  <div class="cursor-pointer hover:underline"><a
+                      href="/message"
+                    >Tin nhắn</a></div>
+                </div>
+              {{/if}}
             {{else}}
               <div
                 class="w-1/2 xl:w-2/5 flex justify-between text-base hidden md:flex"
@@ -91,10 +106,10 @@
                 <div class="cursor-pointer hover:underline"><a href="/">Trang
                     chủ</a></div>
                 <div class="cursor-pointer hover:underline"><a
-                    href="/{{session.user._id}}"
+                    href="/login"
                   >Quản lý bài đăng</a></div>
                 <div class="cursor-pointer hover:underline"><a
-                    href="/message"
+                    href="/login"
                   >Tin nhắn</a></div>
               </div>
             {{/if}}
@@ -332,7 +347,7 @@
     </div>
     {{{body}}}
 
-    <div class="w-full flex justify-center h-64 bg-gray-800">
+    <div class="w-full mt-20 flex justify-center h-64 bg-gray-800">
       <div class="w-full sm:w-9/12 flex justify-between">
         <div
           class="text-3xl sm:text-5xl h-full flex items-center font-extrabold text-green-600"
