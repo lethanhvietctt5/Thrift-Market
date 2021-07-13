@@ -81,6 +81,7 @@
                 class="px-4 py-2 text-center"
                 style="background-color:#f8f8f8"
               >Trạng thái</th>
+              <th>Sửa bài</th>
               <th>Xóa bài</th>
             </tr>
           </thead>
@@ -88,17 +89,33 @@
             {{#each posts}}
               <tr class="hover:bg-gray-100 border-b border-gray-200 py-10">
                 <td class="px-4 py-4"><a
-                    href="/post/edit/{{this._id}}"
+                    href="/post/info/{{this._id}}"
                   >{{this.title}}</a></td>
                 <td class="px-4 py-4 text-center">{{#formatDate
                     this.created
                   }}{{/formatDate}}</td>
                 {{#if this.state}}
+                  {{#if this.hide}}
+                  <td class="px-4 py-4 text-center text-gray-600">Đã bị ẩn</td>
+                  {{else}}
                   <td class="px-4 py-4 text-center text-green-600">Đã duyệt</td>
+                  {{/if}}
                 {{else}}
                   <td class="px-4 py-4 text-center text-red-600">Chờ duyệt</td>
                 {{/if}}
                 <td class="px-4 py-4 text-center">
+                  {{#if this.state}}
+                  {{#if this.hide}}
+                  {{else}}
+                  <a href="/post/edit/{{this._id}}">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 384 384"><path d="M0 304L236 68l80 80L80 384H0v-80zM378 86l-39 39l-80-80l39-39q6-6 15-6t15 6l50 50q6 6 6 15t-6 15z" fill="#626262"/></svg>
+                  </a>
+                  {{/if}}
+                  {{/if}}
+                </td>
+                <td class="px-4 py-4 text-center">
+                  {{#if this.hide}}
+                  {{else}}
                   <a href="/{{this.author}}/deletePost/{{this._id}}">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -115,6 +132,7 @@
                         fill="currentColor"
                       ></path></svg>
                   </a>
+                  {{/if}}
                 </td>
               </tr>
             {{/each}}
