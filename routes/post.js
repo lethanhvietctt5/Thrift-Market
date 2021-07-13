@@ -45,6 +45,8 @@ router.get("/create", async (req, res) => {
 router.get("/byCategory/:name", async (req, res) => {
   const result = await Post.find({
     categories: req.params.name,
+    state: true,
+    hide: false
   });
   res.render("post/category", {
     result: result,
@@ -81,6 +83,7 @@ router.post("/add", async (req, res) => {
     price: 0.0,
     categories: [],
     state: false,
+    hide: false
   });
   await new_post.save();
 
